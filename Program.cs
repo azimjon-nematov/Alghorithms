@@ -1,5 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
+string connectionString = builder.Configuration["ConnectionString"];
+//builder.Services.AddTransient<IRepository, Repository>(provider => new Repository(connectionString));
 
 builder.Services.AddControllersWithViews(); // добавляем сервисы MVC
 
