@@ -1,6 +1,8 @@
 ﻿@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
+@using Alghorithms.Models
+@model List<Topic>
 <header class="site-header d-flex flex-column justify-content-center align-items-center">
     <div class="container">
         <div class="row align-items-center">
@@ -31,6 +33,30 @@
             </div>
 
             <div class="col-lg-8 col-12 mt-3 mx-auto">
+
+                @foreach(var topic in Model)
+                {
+                    <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                        <div class="d-flex">
+                            <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+
+                            <div class="custom-block-topics-listing-info d-flex">
+                                <div>
+                                    <h5 class="mb-2">@topic.Name</h5>
+
+                                    <p class="mb-0">Topic Listing includes home, listing, detail and contact pages. Feel free to modify this template for your custom websites.</p>
+
+                                    <a href="topics-detail.html" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
+                                </div>
+
+                                <span class="badge bg-design rounded-pill ms-auto">14</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
                 <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
                     <div class="d-flex">
                         <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
