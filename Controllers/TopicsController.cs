@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alghorithms.Controllers
 {
+    
     public class TopicsController : Controller
     {
         ITopicRepository repo;
@@ -13,6 +14,16 @@ namespace Alghorithms.Controllers
         public IActionResult Index()
         {
             return View(repo.GetAll());
+        }
+
+        public IActionResult Search([FromRoute] string Name)
+        {
+            return View("Index", repo.Search(Name));
+        }
+
+        public IActionResult Detail([FromRoute] int Id)
+        {
+            return View();
         }
     }
 }

@@ -31,7 +31,7 @@
 
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                         <i class="bi-back"></i>
                         <span>Topic</span>
                     </a>
@@ -47,11 +47,11 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_1">Home</a>
+                                <a class="nav-link click-scroll" href="@Url.Action("Index", "Home")">Главная</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_2">Browse Topics</a>
+                                <a class="nav-link" href="@Url.Action("Index", "Topics")">Алгоритмы</a>
                             </li>
     
                             <li class="nav-item">
@@ -70,7 +70,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
 
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="@Url.Action("Index", "Topics", null, null)">Topics Listing</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index", "Topics")">Topics Listing</a></li>
 
                                     <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
                                 </ul>
@@ -91,7 +91,7 @@
 
 
 
-<footer class="site-footer section-padding">
+        <footer class="site-footer section-padding">
             <div class="container">
                 <div class="row">
 
