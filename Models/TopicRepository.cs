@@ -10,6 +10,7 @@ namespace Alghorithms.Models
         List<Topic> GetAll();
         TopicDetail? Get(int index);
         List<Topic> Search(string Name);
+        List<Content> GetTopicContent(int TopicId);
     }
 
     public class TopicRepository : ITopicRepository
@@ -51,6 +52,16 @@ namespace Alghorithms.Models
                     new { Name = "%" + Name + "%" }
                 ).ToList();
                 return topics;
+            }
+        }
+
+        public List<Content> GetTopicContent(int TopicId)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sql = "SELECT c.Id, ct.Id [ContentTypeId], ct.Name [ContentTypeName], c.TopicId, c.Data, c.Params, c.[Order], c.CodeListId FROM Content c LEFT JOIN ContentTypes ct ON c.ContentTypeId = ct.Id WHERE c.TopicId = @TopicId";
+                var contentList = db.Query<Content>(sql, new { TopicId }).ToList();
+                return contentList;
             }
         }
     }
