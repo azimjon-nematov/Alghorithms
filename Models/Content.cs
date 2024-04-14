@@ -2,12 +2,12 @@
 {
     public class Content
     {
-        int Id { get; set; }
-        int ContentTypeId { get; set; }
-        string ContentTypeName { get; set; }
-        int TopicId { get; set; }
-        string Data { get; set; }
-        string? Params { get; set; }
-        int Order { get; set; }
+        public int Id { get; set; }
+        public int ContentTypeId { get; set; }
+        public string ContentTypeName { get; set; }
+        public int TopicId { get; set; }
+        public string Data { get; set; }
+        public string? Params { get; set; }
+        public int Order { get; set; }
     }
 }

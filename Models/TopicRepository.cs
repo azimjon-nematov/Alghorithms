@@ -25,7 +25,7 @@ namespace Alghorithms.Models
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var topics = db.Query<Topic>("SELECT * FROM Topics WHERE ParentId is NULL").ToList();
+                var topics = db.Query<Topic>("SELECT * FROM Topics").ToList(); // WHERE ParentId is NULL
                 return topics;
             }
         }

@@ -17,7 +17,11 @@
                                 </ol>
                             </nav>
 
-                            <h2 class="text-white">Introduction to <br> Web Design 101</h2>
+                            @*<h2 class="text-white">Introduction to <br> Web Design 101</h2>*@
+                            @if (@Model.First() != null)
+                            {
+                            <h2 class="text-white">@Model[0].Data</h2>
+                            }
 
                             <div class="d-flex align-items-center mt-5">
                                 <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">Read More</a>
@@ -40,6 +44,47 @@
             <section class="topics-detail-section section-padding" id="topics-detail">
                 <div class="container">
                     <div class="row">
+
+                    @foreach (var content in Model)
+                    {
+                        <div class="col-lg-8 col-12 m-auto">
+                            @if(content.ContentTypeName == "Title")
+                            {
+                                <h3 class="mb-4">@content.Data</h3>
+                            }
+                            else if(content.ContentTypeName == "Text")
+                            {
+                                <p>@content.Data</p>
+                            }
+                            else if(content.ContentTypeName == "Subtitle")
+                            {
+                                
+                            }
+                            else if(content.ContentTypeName == "Image")
+                            {
+                                
+                            }
+                            else if(content.ContentTypeName == "MarkedText")
+                            {
+                                var items = content.Data.Split('\n');
+                                <ul>
+                                @foreach (var item in items)
+                                {
+                                    <li>@item</li>
+                                }
+                                </ul>
+                            }
+                            else if(content.ContentTypeName == "Code")
+                            {
+                                
+                            }
+                            else if(content.ContentTypeName == "Warning")
+                            {
+                                <blockquote>@content.Data</blockquote>
+                            }
+
+                        </div>
+                    }
 
                         <div class="col-lg-8 col-12 m-auto">
                             <h3 class="mb-4">Introduction to Web Design</h3>
@@ -93,3 +138,5 @@
                     </div>
                 </div>
             </section>
+если работаем с отсортированным массивом
+если нужно быстро написать функцию поиска
