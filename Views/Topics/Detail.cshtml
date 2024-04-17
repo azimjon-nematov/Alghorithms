@@ -41,21 +41,21 @@
             </header>
 
 
-<section class="topics-detail-section section-padding" id="topics-detail">
-    <div class="container">
-        <div class="row">
+            <section class="topics-detail-section section-padding" id="topics-detail">
+                <div class="container">
+                    <div class="row">
 
-        @foreach (var content in Model)
-        {
-            <div class="col-lg-8 col-12 m-auto">
-                @if(content.ContentTypeName == "Title")
-                {
-                    <h3 class="mb-4">@content.Data</h3>
-                }
-                else if(content.ContentTypeName == "Text")
-                {
-                    <p>@content.Data</p>
-                }
+                    @foreach (var content in Model)
+                    {
+                        <div class="col-lg-8 col-12 m-auto">
+                            @if(content.ContentTypeName == "Title")
+                            {
+                                <h3 class="mb-4">@content.Data</h3>
+                            }
+                            else if(content.ContentTypeName == "Text")
+                            {
+                                <p>@content.Data</p>
+                            }
                             else if(content.ContentTypeName == "Subtitle")
                             {
                                 
