@@ -8,7 +8,7 @@ namespace Alghorithms.Models
     public interface ITopicRepository
     {
         List<Topic> GetAll();
-        TopicDetail? Get(int index);
+        TopicDetail? Get(int id);
         List<Topic> Search(string Name);
         List<Content> GetTopicContent(int TopicId);
     }
