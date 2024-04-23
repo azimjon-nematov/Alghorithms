@@ -10,13 +10,13 @@
             <div class="col-lg-5 col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Homepage</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Homepage</a></li>
 
-                        <li class="breadcrumb-item active" aria-current="page">Topics Listing</li>
+                        <li class="breadcrumb-item active" aria-current="page">Все алгоритмы</li>
                     </ol>
                 </nav>
 
-                <h2 class="text-white">Topics Listing</h2>
+                <h2 class="text-white">Все алгоритмы</h2>
             </div>
 
         </div>
@@ -28,9 +28,9 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-12 col-12 text-center">
+            @*<div class="col-lg-12 col-12 text-center">
                 <h3 class="mb-4">Popular Topics</h3>
-            </div>
+            </div>*@
 
             <div class="col-lg-8 col-12 mt-3 mx-auto">
 
@@ -51,11 +51,35 @@
                                         <a href="@Url.Action("Detail", "Topics", new { Id = topic.Id})" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
                                     }
                                 </div>
-
-                                <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                @if (topic.HasChildren)
+                                {
+                                    <span class="badge bg-design rounded-pill ms-auto">@topic.children!.Count</span>
+                                }
                             </div>
                         </div>
                     </div>
+                    @if (topic.HasChildren)
+                    {
+                        @foreach (var child in topic.children!) 
+                        {
+                        <div class="custom-block custom-block-child custom-block-topics-listing bg-white shadow-lg mb-5">
+                            <div class="d-flex">
+
+                                <div class="custom-block-topics-listing-info d-flex" style="margin: 0px 20px;">
+                                    <div>
+                                        <h5 class="mb-2">@child.Name</h5>
+
+                                        @if (!child.HasChildren)
+                                        {
+                                            <a href="@Url.Action("Detail", "Topics", new { Id = child.Id})" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    }
+
                 }
 
 

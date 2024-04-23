@@ -535,13 +535,18 @@ strong {
   margin-bottom: -100px;
 }
 
+.custom-block-child {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .custom-block {
-  border-radius: var(--border-radius-medium);
-  position: relative;
-  overflow: hidden;
-  padding: 30px;
-  transition: all 0.3s ease;
-  height: 100%;
+    border-radius: var(--border-radius-medium);
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    transition: all 0.3s ease;
+    height: 100%;
 }
 
 .custom-block:hover {
