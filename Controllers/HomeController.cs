@@ -8,5 +8,10 @@ namespace Alghorithms.Controllers
         {
             return View();
         }
+
+        public IActionResult Code()
+        {
+            return View();
+        }
     }
 }
