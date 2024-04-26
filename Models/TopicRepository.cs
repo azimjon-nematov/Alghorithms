@@ -69,6 +69,14 @@ namespace Alghorithms.Models
             {
                 var sql = "SELECT c.Id, ct.Id [ContentTypeId], ct.Name [ContentTypeName], c.TopicId, c.Data, c.Params, c.[Order], c.CodeListId FROM Content c LEFT JOIN ContentTypes ct ON c.ContentTypeId = ct.Id WHERE c.TopicId = @TopicId";
                 var contentList = db.Query<Content>(sql, new { TopicId }).ToList();
+                sql = "SELECT c.Id, c.CodeListId, c.LanguageId, p.Title [LanguageName], c.Code FROM CodeInLang c LEFT JOIN ProgramingLanguages p ON c.LanguageId = p.Id WHERE c.CodeListId = @Id";
+                foreach (var content in contentList)
+                {
+                    if (content.ContentTypeName == "Code")
+                    {
+                        content.codes = db.Query<CodeInLang>(sql, new { Id = content.CodeListId! }).ToList();
+                    }
+                }
                 return contentList;
             }
         }

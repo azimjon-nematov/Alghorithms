@@ -72,7 +72,10 @@
                             }
                             else if(content.ContentTypeName == "Code")
                             {
-                                
+                                <div>
+                                    @content.codes.First().LanguageName <br>
+                                    @Html.Raw(@content.codes.First().Code)
+                                </div>
                             }
                             else if(content.ContentTypeName == "Warning")
                             {

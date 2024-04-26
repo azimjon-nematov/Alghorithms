@@ -9,7 +9,7 @@ namespace Alghorithms.Models
         List<Content> GetTopicContent(int TopicId);
 
     }
-    public class ContentRepository : IContentRepository
+    public class ContentRepository : IContentRepository // TODO: DELETE OR FIX
     {
         string connectionString;
         public ContentRepository(string connectionString)
