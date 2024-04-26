@@ -1,0 +1,261 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<script>
+    function toggleDropdown() {
+        document.body.classList.toggle('dropdown-open');
+    }
+</script>
+
+<section class="section-padding">
+    <div>
+        <div class="row">
+            <div class="col-lg-8 col-12 mt-3 mx-auto">
+                <div class="syntaxhighlighter">
+                    <div class="toolbar">
+                        <span>
+                            <a href="#" class="toolbar_item command_help help">?</a>
+                        </span>
+                    </div>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td class="gutter">
+                                    <div class="line number1 index0 alt2">1</div>
+                                    <div class="line number2 index1 alt1">2</div>
+                                    <div class="line number3 index2 alt2">3</div>
+                                    <div class="line number4 index3 alt1">4</div>
+                                    <div class="line number5 index4 alt2">5</div>
+                                    <div class="line number6 index5 alt1">6</div>
+                                </td>
+                                <td class="code">
+                                    <div class="container">
+                                        <div class="line number1 index0 alt2">
+                                            <code class="c# keyword">string</code>
+                                            <code class="c# plain">name = </code>
+                                            <code class="c# string">"Tom"</code>
+                                            <code class="c# plain">;&nbsp; </code>
+                                            <code class="c# comments">// определяем переменную и инициализируем ее</code>
+                                        </div>
+                                        <div class="line number2 index1 alt1">
+                                            <code class="c# spaces">&nbsp;</code>&nbsp;
+                                        </div>
+                                        <div class="line number3 index2 alt2">
+                                            <code class="c# plain">Console.WriteLine(name);&nbsp;&nbsp;&nbsp; </code>
+                                            <code class="c# comments">// Tom</code>
+                                        </div>
+                                        <div class="line number4 index3 alt1">
+                                            <code class="c# spaces">&nbsp;</code>&nbsp;
+                                        </div>
+                                        <div class="line number5 index4 alt2">
+                                            <code class="c# plain">name = </code>
+                                            <code class="c# string">"Bob"</code>
+                                            <code class="c# plain">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code>
+                                            <code class="c# comments">// меняем значение переменной</code>
+                                        </div>
+                                        <div class="line number6 index5 alt1">
+                                            <code class="c# plain">Console.WriteLine(name);&nbsp;&nbsp;&nbsp; </code>
+                                            <code class="c# comments">// Bob</code>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdownContainer">
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown 1</button>
+                <div class="dropdown-content">
+                    <a href="#">Ссылка 1</a>
+                    <a href="#">Ссылка 2</a>
+                    <a href="#">Ссылка 3</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown 2</button>
+                <div class="dropdown-content">
+                    <a href="#">Ссылка 1</a>
+                    <a href="#">Ссылка 2</a>
+                    <a href="#">Ссылка 3</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+@*<h2 id="syntaxhighlighter"> Кётаро Ичаго</h2>*@
+
+<style>
+    div {
+        display: block;
+        unicode-bidi: isolate;
+    }
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        word-wrap: break-word;
+        background-color: var(--container-bg-color);
+        border: 1px solid #ccc;
+    }
+
+    .syntaxhighlighter {
+        width: 99% !important;
+        margin: 1em 0 1em -4px !important;
+        position: relative !important;
+        overflow: auto !important;
+        font-size: 1em !important;
+        font-family: var(--code-font-family);
+        height: auto;
+        border: silver 1px solid;
+        clear: both;
+        background-color: var(--code-bgcolor) !important;
+    }
+    .syntaxhighlighter .toolbar {
+        display: none;
+    }
+
+    .syntaxhighlighter table {
+        width: 100% !important;
+    }
+
+    table {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        unicode-bidi: isolate;
+        border-color: inherit;
+    }
+
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        unicode-bidi: isolate;
+        border-color: inherit;
+    }
+
+    td {
+        vertical-align: top;
+    }
+    .gutter {
+        display: block;
+    }
+
+    .syntaxhighlighter table td.gutter .line {
+        text-align: right !important;
+        padding: 0 0.5em 0 1em !important;
+    }
+
+    .syntaxhighlighter .gutter .line {
+        border-right: 3px solid #6ce26c !important;
+    }
+
+    .syntaxhighlighter .line.alt2 {
+        background-color: var(--code-bgcolor) !important;
+    }
+
+    .syntaxhighlighter table td.code {
+        width: 97% !important;
+    }
+
+    .syntaxhighlighter table td.code .container {
+        position: relative !important;
+    }
+
+    .syntaxhighlighter .line.alt2 {
+        background-color: var(--code-bgcolor) !important;
+    }
+
+    .syntaxhighlighter .line.alt1 {
+        background-color: var(--code-bgcolor) !important;
+    }
+
+    .syntaxhighlighter .keyword {
+        color: #006699 !important;
+    }
+
+    .syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+        color: var(--code-plain) !important;
+    }
+
+    .syntaxhighlighter .string, .syntaxhighlighter .string a {
+        color: var(--code-string) !important;
+    }
+
+    .syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+        color: #008200 !important;
+    }
+
+    .line{
+        text-wrap: nowrap;
+    }
+
+    .dropdownContainer {
+        border: silver 1px solid;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%; /* Ширина контейнера */
+        margin: 0 auto; /* Центрирование по горизонтали */
+    }
+
+    .dropdown {
+        position: relative;
+        margin: 10px;
+        width: 100%; /* Ширина выпадающего блока */
+    }
+
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .dropdown-content {
+        border: silver 1px solid;
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        width: 100%; /* Ширина контента */
+        left: 0; /* Смещение слева */
+        top: 100%; /* Смещение списка вниз */
+    }
+
+        .dropdown-content a {
+            border: silver 1px solid;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+</style>
