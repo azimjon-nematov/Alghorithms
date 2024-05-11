@@ -13,5 +13,10 @@ namespace Alghorithms.Controllers
         {
             return View();
         }
+
+        public IActionResult InDevelopment()
+        {
+            return View();
+        }
     }
 }

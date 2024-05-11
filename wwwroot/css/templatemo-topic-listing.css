@@ -43,6 +43,16 @@ https://templatemo.com/tm-590-topic-listing
   --font-weight-medium:           500;
   --font-weight-semibold:         600;
   --font-weight-bold:             700;
+
+
+  --code-font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+  --code-font-size: 14px;
+  --codef-bgcolor: #fff;
+  --code-bgcolor: #F5F5FA;
+  --code-keyword: #006699;
+  --code-plain: #000;
+  --code-comment: #008200;
+  --code-string: #DB003E;
 }
 
 body {
@@ -909,7 +919,7 @@ blockquote {
   padding-left: 20px;
 }
 
-.custom-form button[type="submit"] {
+.custom-form button[type="button"] {
   background: var(--custom-btn-bg-color);
   border: none;
   border-radius: var(--border-radius-large);
@@ -920,11 +930,22 @@ blockquote {
   transition: all 0.3s;
   margin-bottom: 0;
 }
+.searchBtn {
+    border-radius: var(--border-radius-large);
+    color: var(--p-color);
+    margin-bottom: 24px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 20px;
+    outline: none;
+    width: 120px;
+    border-radius: 100px;
+}
 
-.custom-form button[type="submit"]:hover,
-.custom-form button[type="submit"]:focus {
-  background: var(--custom-btn-bg-hover-color);
-  border-color: transparent;
+.custom-form button[type="button"]:hover,
+.custom-form button[type="button"]:focus {
+    background: var(--custom-btn-bg-hover-color);
+    border-color: transparent;
 }
 
 
@@ -1158,3 +1179,116 @@ blockquote {
   }
 }
 
+
+
+
+
+
+
+.syntaxhighlighter {
+    width: 99% !important;
+    margin: 1em 0 1em -4px !important;
+    position: relative !important;
+    overflow: auto !important;
+    font-size: 1em !important;
+    font-family: var(--code-font-family);
+    height: auto;
+    border: silver 1px solid;
+    clear: both;
+    background-color: var(--code-bgcolor) !important;
+}
+
+.syntaxhighlighter .toolbar {
+    /*display: none;*/
+}
+
+.syntaxhighlighter table {
+    width: 100% !important;
+}
+
+table {
+    display: flex;
+    overflow-x: auto;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+td {
+    vertical-align: top;
+}
+
+.gutter {
+    display: block;
+}
+
+.syntaxhighlighter table td.gutter .line {
+    text-align: right !important;
+    padding: 0 0.5em 0 1em !important;
+}
+
+.syntaxhighlighter .gutter .line {
+    border-right: 3px solid #6ce26c !important;
+}
+
+.syntaxhighlighter .line.alt2 {
+    background-color: var(--code-bgcolor) !important;
+}
+
+.syntaxhighlighter table td.code {
+    width: 97% !important;
+}
+
+.syntaxhighlighter table td.code .codecontainer {
+    position: relative !important;
+}
+
+.syntaxhighlighter .line.alt2 {
+    background-color: var(--code-bgcolor) !important;
+}
+
+.syntaxhighlighter .line.alt1 {
+    background-color: var(--code-bgcolor) !important;
+}
+
+.syntaxhighlighter .keyword {
+    color: #006699 !important;
+}
+
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+    color: var(--code-plain) !important;
+}
+
+.syntaxhighlighter .string, .syntaxhighlighter .string a {
+    color: var(--code-string) !important;
+}
+
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+    color: #008200 !important;
+}
+
+.line {
+    text-wrap: nowrap;
+}
+
+.toolbar {
+    /*height: 80px;*/
+    border: 2px solid black;
+    margin: 0px;
+}
+.codetest {
+    white-space: pre;
+    font-size: 1em !important;
+    font-family: var(--code-font-family);
+}

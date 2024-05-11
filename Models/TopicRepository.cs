@@ -59,6 +59,14 @@ namespace Alghorithms.Models
                     "SELECT * FROM Topics WHERE Name LIKE @Name", 
                     new { Name = "%" + Name + "%" }
                 ).ToList();
+
+                foreach (var topic in topics)
+                {
+                    if (topic.HasChildren)
+                    {
+                        topic.children = db.Query<Topic>("SELECT * FROM Topics WHERE ParentId = @Id", new { topic.Id }).ToList();
+                    }
+                }
                 return topics;
             }
         }

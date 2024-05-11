@@ -1,6 +1,12 @@
 ﻿@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
+<script>
+function searchClick() {
+    var searchText = encodeURIComponent(document.getElementById("search").value);
+    window.open("Topics/Search/"+searchText,"_self")
+}
+</script>
             <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
                 <div class="container">
                     <div class="row">
@@ -10,17 +16,20 @@
 
                             <h6 class="text-center">платформа для изучения алгоритмов</h6>
 
-                            <form @*action="@Url.Action("Search", "Topics", null)"*@ method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
-                                <div class="input-group input-group-lg">
+                            @*<form @*action="@Url.Action("Search", "Topics", null)" method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">*@
+                        <div class="custom-form mt-4 pt-2 mb-lg-0 mb-5" >
+                            <div class="input-group input-group-lg">
                                     <span class="input-group-text bi-search" id="basic-addon1">
                                         
                                     </span>
 
-                                    <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Design, Code, Marketing, Finance ..." aria-label="Search">
+                                    <input id="search" name="keyword" type="search" class="form-control" placeholder="Design, Code, Marketing, Finance ..." aria-label="Search">
 
-                                    <button type="submit" class="form-control">Искать</button>
+                                    <button onclick="searchClick()" type="button" class="searchBtn">Искать</button>
                                 </div>
-                            </form>
+                            </div>
+                                
+                            @*</form>*@
                         </div>
 
                     </div>

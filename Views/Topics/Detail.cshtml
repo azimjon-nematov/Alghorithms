@@ -58,7 +58,9 @@
                             }
                             else if(content.ContentTypeName == "Image")
                             {
-                                
+                                <div class="row my-4">
+                                    <img src="@content.Data" class="topics-detail-block-image img-fluid">
+                                </div>
                             }
                             else if(content.ContentTypeName == "MarkedText")
                             {
@@ -72,10 +74,48 @@
                             }
                             else if(content.ContentTypeName == "Code")
                             {
-                                <div>
-                                    @content.codes.First().LanguageName <br>
-                                    @Html.Raw(@content.codes.First().Code)
-                                </div>
+                                    @*@content.codes.First().LanguageName <br>
+                                    @Html.Raw(@content.codes.First().Code)*@
+
+                                    <script>
+                                        var codes@(content.CodeListId) =[
+                                            `@Html.Raw(@content.codes.First().Code)`
+                                            @for(var i = 1; i < @content.codes.Count; ++i)
+                                            {
+                                            @(",`");@Html.Raw(@content.codes[i].Code);@("`");
+                                            }
+                                        ];
+
+                                        function selectCode@(content.CodeListId)() {
+                                            var myselect = document.getElementById("codeselect@(content.CodeListId)");
+                                            var index = myselect.selectedIndex;
+                                            index = (index == -1 || index == undefined) ? 0 : index;
+                                            document.getElementById("codeviewer@(content.CodeListId)").innerText = codes@(content.CodeListId)[index];
+                                        }
+
+                                    </script>
+                                    
+                                    <div class="syntaxhighlighter">
+                                        <div class="toolbar">
+                                            <select id="codeselect@(content.CodeListId)" onchange="selectCode@(content.CodeListId)()">
+                                            @for (var i=0; i < content.codes.Count; i++)
+                                            {    
+                                                <option value="@content.codes[i].LanguageId">
+                                                    @content.codes[i].LanguageName
+                                                </option>
+                                            }
+                                            </select>
+                                        </div>
+                                        <div style="padding: 10px">
+<span class="codetest" id="codeviewer@(content.CodeListId)"></span>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <script>
+                                        selectCode@(content.CodeListId)();
+                                    </script>
+
                             }
                             else if(content.ContentTypeName == "Warning")
                             {
