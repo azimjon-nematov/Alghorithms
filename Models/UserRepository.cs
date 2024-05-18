@@ -13,7 +13,7 @@ namespace Alghorithms.Models
         //bool Create(User user);
         //bool Update(User user);
         //ResponseResult Delete(int id);
-        User? LogIn(string userName, string login);
+        User? LogIn(string login, string password);
     }
 
     public class UserRepository : IUserRepository

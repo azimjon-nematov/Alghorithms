@@ -11,4 +11,10 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Auth\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Auth\" />
+  </ItemGroup>
 </Project>

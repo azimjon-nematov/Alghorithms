@@ -1,4 +1,5 @@
 using Alghorithms.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,15 +9,24 @@ builder.Services.AddTransient<ITopicRepository, TopicRepository>(
     provider => new TopicRepository(connectionString));
 builder.Services.AddTransient<IContentRepository, ContentRepository>(
     provider => new ContentRepository(connectionString));
+builder.Services.AddTransient<IUserRepository, UserRepository>(
+    provider => new UserRepository(connectionString));
 
-builder.Services.AddControllersWithViews(); // добавляем сервисы MVC
+builder.Services.AddControllersWithViews(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ MVC
+
+// Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ СЃ РїРѕРјРѕС‰СЊСЋ РєСѓРєРё
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options => options.LoginPath = "/login");
+builder.Services.AddAuthorization();
 
 
 
 var app = builder.Build();
 app.UseStaticFiles();
+app.UseAuthentication();   // РґРѕР±Р°РІР»РµРЅРёРµ middleware Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё 
+app.UseAuthorization();   // РґРѕР±Р°РІР»РµРЅРёРµ middleware Р°РІС‚РѕСЂРёР·Р°С†РёРё 
 
-// устанавливаем сопоставление маршрутов с контроллерами
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
