@@ -1,3 +1,43 @@
 ﻿@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
+
+<link href="~/css/auth.css" rel="stylesheet">
+
+<section class="topics-detail-section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="template-page-wrapper">
+                <form class="form-horizontal templatemo-signin-form" role="form" action="index.html" method="get">
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label for="login" class="col-sm-2 control-label">Login</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="login" class="form-control" id="login" placeholder="Username">
+                            </div>
+                        </div>              
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label for="password" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" value="Sign in" class="btn btn-default">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
