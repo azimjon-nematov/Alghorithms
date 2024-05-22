@@ -1,3 +1,27 @@
+DROP TABLE IF EXISTS CodeInLang
+GO
+DROP TABLE IF EXISTS Comments
+GO
+DROP TABLE IF EXISTS Users
+GO
+DROP TABLE IF EXISTS Content
+GO
+DROP TABLE IF EXISTS CodeLists
+GO
+DROP TABLE IF EXISTS ContentTypes
+GO
+DROP TABLE IF EXISTS TestCase
+GO
+DROP TABLE IF EXISTS Task
+GO
+DROP TABLE IF EXISTS Topics
+GO
+DROP TABLE IF EXISTS ProgramingLanguages
+GO
+DROP TABLE IF EXISTS Images
+GO
+
+
 
 CREATE TABLE Users(
 	[Id] [INT] IDENTITY(1,1) NOT NULL,
@@ -140,3 +164,27 @@ CREATE TABLE Images (
 	[IsLocal] [Bit] NOT NULL,
 	CONSTRAINT PK_Images_Id PRIMARY KEY (Id)
 )
+
+GO
+
+INSERT INTO ContentTypes([Name])
+VALUES('Title')
+	 ,('Text')
+	 ,('Subtitle')
+	 ,('Image')
+	 ,('MarkedText')
+	 ,('Code')
+	 ,('Warning')
+;
+
+GO
+
+INSERT INTO ProgramingLanguages([title])
+VALUES('Python')
+	 ,('C++')
+	 ,('C#')
+	 ,('JavaScript')
+	 ,('Java')
+	 ,('Kotlin')
+	 ,('Swift')
+;
