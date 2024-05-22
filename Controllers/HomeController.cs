@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Alghorithms.Controllers
 {
@@ -14,6 +15,7 @@ namespace Alghorithms.Controllers
             return View();
         }
 
+        //[Authorize(Roles = "True")]
         public IActionResult InDevelopment()
         {
             return View();
