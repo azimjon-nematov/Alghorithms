@@ -11,12 +11,13 @@ builder.Services.AddTransient<IContentRepository, ContentRepository>(
     provider => new ContentRepository(connectionString));
 builder.Services.AddTransient<IUserRepository, UserRepository>(
     provider => new UserRepository(connectionString));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddControllersWithViews(); // ��������� ������� MVC
 
 // аутентификация с помощью куки
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options => options.LoginPath = "/login");
+    .AddCookie(options => options.LoginPath = "/Auth/Login");
 builder.Services.AddAuthorization();
 
 

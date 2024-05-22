@@ -63,7 +63,7 @@ namespace Alghorithms.Models
 
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Users(UserName, Login, UserRoleId) VALUES(@UserName, @login, @UserRoleId); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO Users(Name, Login, PasswordHash, IsAdmin) VALUES(@Name, @Login, @PasswordHash, 0); SELECT CAST(SCOPE_IDENTITY() as int)";
                 var userId = db.Query<int>(sqlQuery, user).FirstOrDefault();
                 if (userId != 0)
                 {
