@@ -4,7 +4,7 @@ namespace Alghorithms.Controllers
 {
     public class UsersController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Profile()
         {
             return View();
         }
