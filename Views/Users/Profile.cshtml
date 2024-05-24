@@ -1,6 +1,10 @@
 ﻿@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
+
+@using Alghorithms.Models
+@model User
+
 <header class="site-header d-flex flex-column justify-content-center align-items-center">
     <div class="container">
         <div class="row align-items-center">
@@ -8,7 +12,7 @@
             <div class="col-lg-5 col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Homepage</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Главная</a></li>
 
                         <li class="breadcrumb-item active" aria-current="page">Профиль</li>
                     </ol>
@@ -28,11 +32,22 @@
         <div class="row">
 
             <div class="col-lg-12 col-12">
-                <h3 class="mb-4 pb-2">We'd love to hear from you</h3>
+                <h3 class="mb-4 pb-2">@Model.Name</h3>
             </div>
 
+            <div class="col-lg-8 col-12 m-auto">
+                <h3 class="mb-4">@Model.Login</h3>
+            </div>
 
+            <div class="col-lg-8 col-12 m-auto">
+                <a href="#" class="btn custom-btn mt-3 mt-lg-4">Изменить данные</a>
+            </div>
 
+            <div class="col-lg-8 col-12 m-auto">
+                <a href="@Url.Action("SignOutt", "Users")" class="btn custom-btn mt-3 mt-lg-4">Выйти</a>
+            </div>
+
+            <!-- 
             <div class="col-lg-6 col-12">
                 <form action="#" method="post" class="custom-form contact-form" role="form">
                     <div class="row">
@@ -73,6 +88,7 @@
                     </div>
                 </form>
             </div>
+            -->
 
         </div>
     </div>

@@ -26,7 +26,11 @@ namespace Alghorithms.Models
 
         public User? Get(int id)
         {
-            throw new NotImplementedException();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sqlQuery = "SELECT * from Users WHERE Id = @id";
+                return db.Query<User>(sqlQuery, new { id }).First();
+            }
         }
 
         public List<User> GetUsers()
