@@ -85,6 +85,17 @@ namespace Alghorithms.Models
                         content.codes = db.Query<CodeInLang>(sql, new { Id = content.CodeListId! }).ToList();
                     }
                 }
+                sql = @"SELECT c.Id
+                              ,c.UserId
+	                          ,u.Name [UserName]
+                              ,c.TopicId
+                              ,c.Text
+                              ,c.Date
+                              ,c.ParentId
+                          FROM Comments c
+                          LEFT JOIN Users u ON c.UserId = u.Id
+                        WHERE c.TopicId = @TopicId";
+                //contentList.Comments = db.Query<Comment>(sql, new { TopicId }).ToList();
                 return contentList;
             }
         }
