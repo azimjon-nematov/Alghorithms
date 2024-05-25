@@ -37,35 +37,91 @@ function searchClick() {
                 </div>
             </section>
 
-            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <section class="timeline-section " id="section_3">
+                <div class="section-overlay "></div>
+
+                <div class="container section-padding">
+                    <div class="row">
+
+                        <div class="col-12 text-center">
+                            <h2 class="text-white mb-4">Как это работает?</h1>
+                        </div>
+
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <div class="timeline-container">
+                                <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                                    <div class="list-progress">
+                                        <div class="inner"></div>
+                                    </div>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Погрузитесь в мир алгоритмов.</h4>
+
+                                        <p class="text-white"> узнайте о различных типах, их назначении и применении. От сортировки до поиска путей, наши материалы помогут вам понять основы и продвинутые концепции.</p>
+
+                                        <div class="icon-holder">
+                                            <i class="bi-search"></i>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Закладка алгоритмов</h4>
+
+                                        <p class="text-white">Это позволит вам легко возвращаться к изученному материалу и применять его на практике.</p>
+
+                                        <div class="icon-holder">
+                                            <i class="bi-bookmark"></i>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Практикуйтесь на реальных задачах</h4>
+
+                                        <p class="text-white">Решайте проблемы, улучшайте свои навыки и становитесь экспертом в области алгоритмов и структур данных.</p>
+
+                                        <div class="icon-holder">
+                                            <i class="bi-archive"></i>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="text-white text-center">Ниже можете почитать объясненые некоторых важных терминов</h4>
+                </div>
+            </section>
+
+
+            <section class="topics-detail-section section-padding" id="topics-detail">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-8 col-12 mx-auto">
-                            <h2 class ="text-white text-left">О большое</h2>
+                        <div class="col-lg-8 col-12 m-auto">
+                            <h2 class ="text-left">О большое</h2>
 
-                            <p class="text-white text-center">
+                            <p class="text-center">
 
-                            <div class="text-white-50">
+                            <div class="">
                                 "О большое" (или "Big O") -- это нотация, используемая в информатике и математике для описания асимптотической сложности алгоритмов. Она показывает, как время выполнения алгоритма или его использование памяти растет в зависимости от размера входных данных.
                             </div>
                             
                             <br/>
 
-                            <div class="text-white-50">
+                            <div class="">
                                 Основная идея Big O — описать худший сценарий поведения алгоритма. Например, если алгоритм имеет сложность O(n), это значит, что время выполнения алгоритма увеличивается линейно с увеличением размера входных данных. Нотация O(n^2) означает квадратичную зависимость, то есть время выполнения увеличивается пропорционально квадрату размера входных данных.
                             </div>
 
                             <br/>
 
-                            <h4 class="text-white">Примеры часто встречающихся обозначений:</h4>
+                            <h4 class="">Примеры часто встречающихся обозначений:</h4>
                             <ul>
-                                <li class="text-white-50">O(1): Константная сложность, время выполнения не зависит от размера входных данных.</li>
-                                <li class="text-white-50">O(log n): Логарифмическая сложность, часто встречается в алгоритмах поиска.</li>
-                                <li class="text-white-50">O(n log n): Линейно-логарифмическая сложность, характерна для эффективных алгоритмов сортировки, таких как сортировка слиянием.</li>
-                                <li class="text-white-50">O(n^2): Квадратичная сложность, встречается в менее эффективных алгоритмах сортировки, например, в сортировке вставками.</li>
+                                <li class="">O(1): Константная сложность, время выполнения не зависит от размера входных данных.</li>
+                                <li class="">O(log n): Логарифмическая сложность, часто встречается в алгоритмах поиска.</li>
+                                <li class="">O(n log n): Линейно-логарифмическая сложность, характерна для эффективных алгоритмов сортировки, таких как сортировка слиянием.</li>
+                                <li class="">O(n^2): Квадратичная сложность, встречается в менее эффективных алгоритмах сортировки, например, в сортировке вставками.</li>
                             </ul>
 
-                            <div class="text-white-50">Использование Big O позволяет сравнивать и выбирать наиболее эффективные алгоритмы для решения конкретных задач, особенно когда дело касается обработки больших объемов данных.</div>
+                            <div class="">Использование Big O позволяет сравнивать и выбирать наиболее эффективные алгоритмы для решения конкретных задач, особенно когда дело касается обработки больших объемов данных.</div>
                             </p>
                         </div>
                     </div>
@@ -75,11 +131,11 @@ function searchClick() {
 
                     <div class="row">
                         <div class="col-lg-8 col-12 mx-auto">
-                            <h2 class="text-white text-left">Блок схемы</h2>
+                            <h2 class="text-left">Блок схемы</h2>
 
-                            <p class="text-white text-center">
+                            <p class="text-center">
 
-                                <div class="text-white-50">
+                                <div class="">
                                     Блок-схемы — это графическое представление алгоритмов или процессов, используемое для упрощения понимания и анализа последовательности действий. Они широко применяются в программировании, инженерии, управлении проектами и других областях для визуализации работы систем.
                                 </div>
 
@@ -87,40 +143,40 @@ function searchClick() {
 
                                 <br />
 
-                                <h4 class="text-white">Основные элементы блок-схем:</h4>
+                                <h4 class="">Основные элементы блок-схем:</h4>
 
                                 <ul>
-                                    <li class="text-white-50">Овал (терминатор): Начало и конец процесса.</li>
-                                    <li class="text-white-50">Прямоугольник (процесс): Описание операции или действия, выполняемого в процессе.</li>
-                                    <li class="text-white-50">Ромб (решение): Точка принятия решения с несколькими исходами, обычно "да" или "нет".</li>
-                                    <li class="text-white-50">Параллелограмм (ввод/вывод): Операции ввода данных в процесс или вывода данных из него.</li>
-                                    <li class="text-white-50">Стрелки (поток): Указывают направление потока процесса от одного элемента к другому.</li>
+                                    <li class="">Овал (терминатор): Начало и конец процесса.</li>
+                                    <li class="">Прямоугольник (процесс): Описание операции или действия, выполняемого в процессе.</li>
+                                    <li class="">Ромб (решение): Точка принятия решения с несколькими исходами, обычно "да" или "нет".</li>
+                                    <li class="">Параллелограмм (ввод/вывод): Операции ввода данных в процесс или вывода данных из него.</li>
+                                    <li class="">Стрелки (поток): Указывают направление потока процесса от одного элемента к другому.</li>
                                 </ul>
 
-                                <h4 class="text-white">Пример простой блок-схемы для алгоритма нахождения максимального числа из двух:</h4>
+                                <h4 class="">Пример простой блок-схемы для алгоритма нахождения максимального числа из двух:</h4>
 
                                 <ul>
-                                    <li class="text-white-50">Начало (Овал).</li>
-                                    <li class="text-white-50">Ввод двух чисел (Параллелограмм)</li>
-                                    <li class="text-white-50">Сравнение чисел (Ромб).</li>
-                                    <li class="text-white-50">Конец (Овал)</li>
+                                    <li class="">Начало (Овал).</li>
+                                    <li class="">Ввод двух чисел (Параллелограмм)</li>
+                                    <li class="">Сравнение чисел (Ромб).</li>
+                                    <li class="">Конец (Овал)</li>
                                 </ul>
 
                                 <h4 class="text-white">Преимущества использования блок-схем:</h4>
 
                                 <ul>
-                                    <li class="text-white-50">Простота восприятия: Графическое представление упрощает понимание сложных процессов.</li>
-                                    <li class="text-white-50">Ясность: Блок-схемы помогают выявлять логические ошибки и излишние шаги в алгоритме.</li>
-                                    <li class="text-white-50">Универсальность: Подходят для различных областей и типов процессов.</li>
-                                    <li class="text-white-50">Конец (Овал)</li>
+                                    <li class="">Простота восприятия: Графическое представление упрощает понимание сложных процессов.</li>
+                                    <li class="">Ясность: Блок-схемы помогают выявлять логические ошибки и излишние шаги в алгоритме.</li>
+                                    <li class="">Универсальность: Подходят для различных областей и типов процессов.</li>
+                                    <li class="">Конец (Овал)</li>
                                 </ul>
 
-                                <h4 class="text-white">Пример блок-схемы на практике:</h4>
+                                <h4 class="">Пример блок-схемы на практике:</h4>
                                 <div class="col-lg-5 col-12">
                                     <img src="~/images/block.jpg" class="img-fluid" alt="">
                                 </div>
 
-                                <div class="text-white-50">В современных инструментах для создания блок-схем используются программные средства, такие как Microsoft Visio, Lucidchart и другие, что облегчает процесс построения и редактирования диаграмм.</div>
+                                <div class="">В современных инструментах для создания блок-схем используются программные средства, такие как Microsoft Visio, Lucidchart и другие, что облегчает процесс построения и редактирования диаграмм.</div>
                             </p>
                         </div>
                     </div>
@@ -132,7 +188,7 @@ function searchClick() {
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <h2 class="mb-4">Frequently Asked Questions</h2>
+                            <h2 class="mb-4">Часто задаваемые вопросы</h2>
                         </div>
 
                         <div class="clearfix"></div>
@@ -146,13 +202,13 @@ function searchClick() {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is Topic Listing?
+                                        Что такое алгоритм?
                                         </button>
                                     </h2>
 
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            Topic Listing is free Bootstrap 5 CSS template. <strong>You are not allowed to redistribute this template</strong> on any other template collection website without our permission. Please contact TemplateMo for more detail. Thank you.
+                                        <strong>Алгоритм</strong> — это последовательность шагов или инструкций для выполнения определенной задачи или решения проблемы. Они лежат в основе компьютерных программ и помогают автоматизировать процессы.
                                         </div>
                                     </div>
                                 </div>
@@ -160,13 +216,20 @@ function searchClick() {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How to find a topic?
+                                        Какие существуют типы алгоритмов?
                                     </button>
                                     </h2>
 
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can search on Google with <strong>keywords</strong> such as templatemo portfolio, templatemo one-page layouts, photography, digital marketing, etc.
+                                            Существует множество типов алгоритмов, включая:
+                                            <ul>
+                                                <li>Алгоритмы сортировки (быстрая сортировка, сортировка слиянием)</li>
+                                                <li>Поисковые алгоритмы (бинарный поиск, линейный поиск)</li>
+                                                <li>Алгоритмы на графах (алгоритм Дейкстры, поиск в ширину)</li>
+                                                <li>Рекурсивные алгоритмы</li>
+                                                <li>Жадные алгоритмы</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -174,13 +237,41 @@ function searchClick() {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Does it need to paid?
+                                        Что такое асимптотическая сложность алгоритма?
                                     </button>
                                     </h2>
 
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            Асимптотическая сложность описывает производительность и использование ресурсов (время и память) алгоритмом по мере увеличения размера входных данных.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                            Что означает нотация "О большое"?
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            "О большое" (Big O) используется для описания верхней границы времени выполнения или использования памяти алгоритмом в худшем случае. Примеры: O(1) — константное время, O(n) — линейное время, O(n^2) — квадратичное время.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                                            Как выбрать подходящий алгоритм для задачи?
+                                        </button>
+                                    </h2>
+
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Выбор алгоритма зависит от требований задачи, размера входных данных и ресурсов. Важно учитывать время выполнения, использование памяти и простоту реализации. Тестирование и анализ помогают найти наиболее эффективное решение.
                                         </div>
                                     </div>
                                 </div>
