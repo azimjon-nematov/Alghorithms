@@ -8,9 +8,9 @@ namespace Alghorithms.Models
     public interface ITopicRepository
     {
         List<Topic> GetAll();
-        TopicDetail? Get(int id);
+        Topic? Get(int id);
         List<Topic> Search(string Name);
-        List<Content> GetTopicContent(int TopicId);
+        (Topic, List<Content>, List<Comment>) GetTopicContent(int TopicId);
     }
 
     public class TopicRepository : ITopicRepository
@@ -38,7 +38,7 @@ namespace Alghorithms.Models
             }
         }
 
-        public TopicDetail? Get(int id)
+        public Topic? Get(int id)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
@@ -71,7 +71,7 @@ namespace Alghorithms.Models
             }
         }
 
-        public List<Content> GetTopicContent(int TopicId)
+        public (Topic, List<Content>, List<Comment>) GetTopicContent(int TopicId)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
@@ -85,18 +85,14 @@ namespace Alghorithms.Models
                         content.codes = db.Query<CodeInLang>(sql, new { Id = content.CodeListId! }).ToList();
                     }
                 }
-                sql = @"SELECT c.Id
-                              ,c.UserId
-	                          ,u.Name [UserName]
-                              ,c.TopicId
-                              ,c.Text
-                              ,c.Date
-                              ,c.ParentId
-                          FROM Comments c
-                          LEFT JOIN Users u ON c.UserId = u.Id
+                sql = @"SELECT c.Id ,c.UserId ,u.Name [UserName] ,c.TopicId ,c.Text ,c.Date ,c.ParentId
+                        FROM Comments c LEFT JOIN Users u ON c.UserId = u.Id
                         WHERE c.TopicId = @TopicId";
-                //contentList.Comments = db.Query<Comment>(sql, new { TopicId }).ToList();
-                return contentList;
+                var comments = db.Query<Comment>(sql, new { TopicId }).ToList();
+
+                var topic = Get(TopicId);
+
+                return (topic!, contentList, comments);
             }
         }
     }

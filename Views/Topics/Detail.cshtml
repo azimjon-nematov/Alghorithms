@@ -3,7 +3,7 @@
 }
 
 @using Alghorithms.Models
-@model List<Content>
+@model (Topic, List<Content>, List<Comment>)
             <header class="site-header d-flex flex-column justify-content-center align-items-center">
                 <div class="container">
                     <div class="row justify-content-center align-items-center">
@@ -13,11 +13,11 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Homepage</a></li>
 
-                                    <li class="breadcrumb-item active" aria-current="page">Web Design</li>
+                                    <li class="breadcrumb-item active" aria-current="page">@Model.Item1.Name</li>
                                 </ol>
                             </nav>
 
-                            <h2 class="text-white">@ViewData["Title"]</h2>
+                            <h2 class="text-white">@Model.Item1.Name</h2>
                         </div>
 
                         @*<div class="col-lg-5 col-12">
@@ -35,7 +35,7 @@
                 <div class="container">
                     <div class="row">
 
-                    @foreach (var content in Model)
+                    @foreach (Content content in Model.Item2)
                     {
                         <div class="col-lg-8 col-12 m-auto">
                             @if(content.ContentTypeName == "Title")
@@ -146,8 +146,10 @@
                     </div>
                 </div>
             </section>
+
+
 <script type="text/javascript">
-    // эта ссамая полезная функция
+    // функция для создание элементов
     function createElementFromHTML(htmlString) {
         var div = document.createElement('div');
         div.innerHTML = htmlString.trim();
@@ -159,8 +161,8 @@
     function addComment() {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'comment.php');
-        var animeId = encodeURIComponent(document.getElementById("animeId").value);
-        var text = encodeURIComponent(document.getElementById("text").value);
+        var animeId = encodeURIComponent(document.getElementById("topicId").value);
+        var text = encodeURIComponent(document.getElementById("message").value);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send('animeId='+animeId+'&text='+text);
         xhr.onreadystatechange = handleFunc;
@@ -183,41 +185,70 @@
 </script>
 
 
-            <section class="section-padding section-bg">
-                <div class="container">
-                    <div class="row justify-content-center">
+<section class="section-padding section-bg">
+    <div class="container">
+        <div class="row justify-content-center">
 
-                        @*<div class="col-lg-5 col-12">
-                            <img src="~/images/rear-view-young-college-student.jpg" class="newsletter-image img-fluid" alt="">
-                        </div>*@
+            <div class="col-lg-6 col-12">
+                <form action="#" method="post" class="custom-form contact-form" role="form">
+                    <div class="row">
 
-                        <div class="col-lg-6 col-12">
-                            <form action="#" method="post" class="custom-form contact-form" role="form">
-                                <div class="row">
-                                    
-                                    <div class="col-lg-12 col-12 m-auto">
-                                        <h4 class="mb-4">Напишите комментарий к алгоритму</h4>
-                                    </div>
+                        <div class="col-lg-12 col-12 m-auto">
+                            <h4 class="mb-4">Напишите комментарий к алгоритму</h4>
+                        </div>
 
-                                    <div class="col-lg-12 col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control" id="message" name="message" placeholder="Текст комментария"></textarea>
-                                            
-                                            <label for="floatingTextarea">Текст комментария</label>
-                                        </div>
-                                    </div>
+                        <input type="hidden" id="topicId" value="@Model.Item1.Id" />
 
-                                    <div class="col-lg-4 col-12 ms-auto">
-                                        <button onclick="addComment()" class="form-control">Отправить</button>
-                                    </div>
+                        <div class="col-lg-12 col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="message" name="message" placeholder="Текст комментария"></textarea>
 
-                                </div>
-                            </form>
+                                <label for="floatingTextarea">Текст комментария</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-12 ms-auto">
+                            <button onclick="addComment()" class="form-control">Отправить</button>
                         </div>
 
                     </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+@if(Model.Item3.Count != 0)
+{
+<section class="section-padding section-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+
+
+            @foreach (Comment comments in Model.Item3)
+            {
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
+
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 class="mb-2">@comments.UserName</h5>
+
+                                <p class="mb-0" style="color: #fff">@comments.Text</p>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            }
+
+        </div>
+    </div>
+</section>
+}
 
 
-            @*TODO: comments*@
+

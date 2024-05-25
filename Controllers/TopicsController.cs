@@ -25,7 +25,6 @@ namespace Alghorithms.Controllers
 
         public IActionResult Detail([FromRoute] int Id)
         {
-            ViewData["Title"] = repo.Get(Id)?.Name ?? "";
             var contents = repo.GetTopicContent(Id);
             return View(contents);
         }
