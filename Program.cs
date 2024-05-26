@@ -11,6 +11,9 @@ builder.Services.AddTransient<IContentRepository, ContentRepository>(
     provider => new ContentRepository(connectionString));
 builder.Services.AddTransient<IUserRepository, UserRepository>(
     provider => new UserRepository(connectionString));
+builder.Services.AddTransient<ICommentRepository, CommentRepository>(
+    provider => new CommentRepository(connectionString));
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddControllersWithViews(); // ��������� ������� MVC

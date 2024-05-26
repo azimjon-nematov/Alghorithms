@@ -148,7 +148,7 @@
             </section>
 
 
-<script type="text/javascript">
+            <script type="text/javascript">
     // функция для создание элементов
     function createElementFromHTML(htmlString) {
         var div = document.createElement('div');
@@ -160,11 +160,11 @@
     // отправление запроса на добавление коментария
     function addComment() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'comment.php');
-        var animeId = encodeURIComponent(document.getElementById("topicId").value);
+        xhr.open('POST', '@Url.Action("Index", "Home")');
+        var topicId = encodeURIComponent(document.getElementById("topicId").value);
         var text = encodeURIComponent(document.getElementById("message").value);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('animeId='+animeId+'&text='+text);
+        xhr.send('topicId=' + topicId +'&text='+text);
         xhr.onreadystatechange = handleFunc;
 
         function handleFunc() {
@@ -182,7 +182,7 @@
             }
         };
     }
-</script>
+            </script>
 
 
 <section class="section-padding section-bg">
@@ -223,31 +223,29 @@
 
 @if(Model.Item3.Count != 0)
 {
-<section class="section-padding section-bg">
-    <div class="container">
-        <div class="row justify-content-center">
+    <section class="section-padding section-bg">
+        <div class="container">
+            <div class="row justify-content-center">
 
+                @foreach (Comment comments in Model.Item3)
+                {
+                    <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                        <div class="d-flex">
 
-            @foreach (Comment comments in Model.Item3)
-            {
-                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
-                    <div class="d-flex">
+                            <div class="custom-block-topics-listing-info d-flex">
+                                <div>
+                                    <h5 class="mb-2">@comments.UserName</h5>
 
-                        <div class="custom-block-topics-listing-info d-flex">
-                            <div>
-                                <h5 class="mb-2">@comments.UserName</h5>
-
-                                <p class="mb-0" style="color: #fff">@comments.Text</p>
-
+                                    <p class="mb-0" style="color: #fff">@comments.Text</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 }
 
 
