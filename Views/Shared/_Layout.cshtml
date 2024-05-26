@@ -47,11 +47,11 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-lg-5 me-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="@Url.Action("Index", "Home")">Главная</a>
+                                <a class="nav-link click-scroll" href="@Url.Action("Index", "Home")">АСОСӢ</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Topics")">Алгоритмы</a>
+                                <a class="nav-link" href="@Url.Action("Index", "Topics")">Алгоритмҳо</a>
                             </li>
 
                             <li class="nav-item">
@@ -59,7 +59,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("InDevelopment", "Home")">Contact</a>
+                                <a class="nav-link" href="@Url.Action("InDevelopment", "Home")">ТАМОС</a>
                             </li>
                             @if (@HttpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier) != null)
                             {
@@ -76,12 +76,12 @@
                             else 
                             {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Auth</a>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">аутентификатсия</a>
 
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="@Url.Action("Login", "Auth")">Sign In</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Login", "Auth")">ВОРИДШАВӢ</a></li>
 
-                                    <li><a class="dropdown-item" href="@Url.Action("Register", "Auth")">Sign Up</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Register", "Auth")">БАҚАЙДГИРӢ</a></li>
                                 </ul>
                             </li>
                             }
