@@ -117,7 +117,7 @@ CREATE TABLE Comments(
 	[TopicId] [INT] NOT NULL,
 	[Text] [NText] NOT NULL,
 	[Date] [DATE] NOT NULL,
-	[ParentId] [INT] NOT NULL,
+	[ParentId] [INT] NULL,
 	CONSTRAINT PK_Comments_Id PRIMARY KEY (Id),
 	CONSTRAINT FK_Comments_Users FOREIGN KEY (UserId) REFERENCES Users (Id)
 		ON DELETE CASCADE

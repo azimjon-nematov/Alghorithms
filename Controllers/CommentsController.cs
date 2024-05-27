@@ -1,17 +1,25 @@
 ﻿using System;
+using Alghorithms.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alghorithms.Controllers
 {
 	public class CommentsController : Controller
     {
-		public CommentsController()
+        ICommentRepository repo;
+		public CommentsController(ICommentRepository r)
 		{
+            repo = r;
 		}
 
-        public IActionResult Index()
+        public IActionResult Create(int topicId, int userId, string text)
         {
-            return View();
+            var comment = repo.Create(topicId, userId, text);
+            if (comment != null)
+            {
+                return View(comment!);
+            }
+            return BadRequest();
         }
     }
 }

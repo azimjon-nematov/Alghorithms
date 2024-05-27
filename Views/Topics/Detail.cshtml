@@ -3,6 +3,8 @@
 }
 
 @using Alghorithms.Models
+@using System.Security.Claims
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @model (Topic, List<Content>, List<Comment>)
             <header class="site-header d-flex flex-column justify-content-center align-items-center">
                 <div class="container">
@@ -148,7 +150,7 @@
             </section>
 
 
-            <script type="text/javascript">
+<script type="text/javascript">
     // функция для создание элементов
     function createElementFromHTML(htmlString) {
         var div = document.createElement('div');
@@ -160,29 +162,33 @@
     // отправление запроса на добавление коментария
     function addComment() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '@Url.Action("Index", "Home")');
-        var topicId = encodeURIComponent(document.getElementById("topicId").value);
+        xhr.open('POST', '@Url.Action("Create", "Comments")');
+        var topicId = encodeURIComponent("@Model.Item1.Id");
+        var userId = encodeURIComponent("@(HttpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "-69")");
         var text = encodeURIComponent(document.getElementById("message").value);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('topicId=' + topicId +'&text='+text);
+        xhr.send('topicId=' + topicId +'&text='+text+'&userId='+userId);
         xhr.onreadystatechange = handleFunc;
 
         function handleFunc() {
             if(xhr.readyState === 4 && xhr.status === 200) {
-	            var ul = document.getElementById("list");
-	            ul.appendChild(createElementFromHTML(xhr.responseText));
-	            document.getElementById("text").value = '';
-	            var li = document.getElementById("nocomments");
-	            if (typeof(li) != 'undefined' && li != null)
+	            var container = document.getElementById("comments-container");
+                container.innerHTML = xhr.responseText + container.innerHTML;
+
+	            //ul.appendChild(createElementFromHTML(xhr.responseText));
+	            //document.getElementById("text").value = '';
+
+	            var div = document.getElementById("nocomments");
+	            if (typeof(div) != 'undefined' && div != null)
 	            {
-		            li.parentNode.removeChild(li);
+		            div.parentNode.removeChild(div);
 	            }
             } else {
 	            alert(xhr.responseText);
             }
         };
     }
-            </script>
+</script>
 
 
 <section class="section-padding section-bg">
@@ -190,29 +196,27 @@
         <div class="row justify-content-center">
 
             <div class="col-lg-6 col-12">
-                <form action="#" method="post" class="custom-form contact-form" role="form">
+                <div class="custom-form contact-form">
                     <div class="row">
 
                         <div class="col-lg-12 col-12 m-auto">
-                            <h4 class="mb-4">Напишите комментарий к алгоритму</h4>
+                            <h4 class="mb-4">Дар бораи алгоритм шарҳ нависед</h4>
                         </div>
-
-                        <input type="hidden" id="topicId" value="@Model.Item1.Id" />
 
                         <div class="col-lg-12 col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" id="message" name="message" placeholder="Текст комментария"></textarea>
+                                <textarea class="form-control" id="message" name="message" placeholder="Шарҳи матн"></textarea>
 
-                                <label for="floatingTextarea">Текст комментария</label>
+                                <label for="floatingTextarea">Шарҳи матн</label>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-12 ms-auto">
-                            <button onclick="addComment()" class="form-control">Отправить</button>
+                            <button onclick="addComment()" class="form-control">Фиристондан</button>
                         </div>
 
                     </div>
-                </form>
+                </div>
             </div>
 
         </div>
@@ -221,32 +225,36 @@
 
 
 
-@if(Model.Item3.Count != 0)
-{
-    <section class="section-padding section-bg">
-        <div class="container">
-            <div class="row justify-content-center">
+<section class="section-padding section-bg">
+    <div class="container">
+        <div class="row justify-content-center comments-container">
+            @if(Model.Item3.Count == 0)
+            {
+                <div class="nocomments col-lg-8 col-12 m-auto">
+                    <h4 class="mb-4">Ҳанӯз шарҳ нест</h4>
+                    <p>Аввалин шуда шарҳ нависед</p>
+                </div>
+            }
 
-                @foreach (Comment comments in Model.Item3)
-                {
-                    <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
-                        <div class="d-flex">
+            @foreach (Comment comment in Model.Item3)
+            {
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
 
-                            <div class="custom-block-topics-listing-info d-flex">
-                                <div>
-                                    <h5 class="mb-2">@comments.UserName</h5>
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 class="mb-2">@comment.UserName</h5>
 
-                                    <p class="mb-0" style="color: #fff">@comments.Text</p>
-                                </div>
+                                <p class="mb-0">@comment.Text</p>
                             </div>
                         </div>
                     </div>
-                }
+                </div>
+            }
 
-            </div>
         </div>
-    </section>
-}
+    </div>
+</section>
 
 
 
