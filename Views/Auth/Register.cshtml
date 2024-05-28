@@ -2,6 +2,25 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 <link href="~/css/auth.css" rel="stylesheet">
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-lg-11 col-12 mb-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Асосӣ</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">Бақайдгирӣ</li>
+                    </ol>
+                </nav>
+
+                <h2 class="text-white">Бақайдгирӣ</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
 
 <section class="topics-detail-section section-padding">
     <div class="container">

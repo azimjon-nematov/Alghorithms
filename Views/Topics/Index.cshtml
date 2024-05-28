@@ -10,13 +10,13 @@
             <div class="col-lg-8 col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Homepage</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Асосӣ</a></li>
 
-                        <li class="breadcrumb-item active" aria-current="page">@(ViewData["Title"] ?? "Все алгоритмы")</li>
+                        <li class="breadcrumb-item active" aria-current="page">@(ViewData["Title"] ?? "Ҳама алгоритмҳо")</li>
                     </ol>
                 </nav>
 
-                <h2 class="text-white">@(ViewData["Title"] ?? "Все алгоритмы")</h2>
+                <h2 class="text-white">@(ViewData["Title"] ?? "Ҳама алгоритмҳо")</h2>
             </div>
 
         </div>
@@ -48,7 +48,7 @@
 
                                     @if (!topic.HasChildren)
                                     {
-                                        <a href="@Url.Action("Detail", "Topics", new { Id = topic.Id})" class="btn custom-btn mt-3 mt-lg-4">Подробнее</a>
+                                        <a href="@Url.Action("Detail", "Topics", new { Id = topic.Id})" class="btn custom-btn mt-3 mt-lg-4">Муфассалтар</a>
                                     }
                                 </div>
                                 @if (topic.HasChildren)
@@ -71,7 +71,7 @@
 
                                         @if (!child.HasChildren)
                                         {
-                                            <a href="@Url.Action("Detail", "Topics", new { Id = child.Id})" class="btn custom-btn mt-3 mt-lg-4">Подробнее</a>
+                                            <a href="@Url.Action("Detail", "Topics", new { Id = child.Id})" class="btn custom-btn mt-3 mt-lg-4">Муфассалтар</a>
                                         }
                                     </div>
                                 </div>

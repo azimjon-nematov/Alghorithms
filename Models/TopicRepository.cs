@@ -87,7 +87,7 @@ namespace Alghorithms.Models
                 }
                 sql = @"SELECT c.Id ,c.UserId ,u.Name [UserName] ,c.TopicId ,c.Text ,c.Date ,c.ParentId
                         FROM Comments c LEFT JOIN Users u ON c.UserId = u.Id
-                        WHERE c.TopicId = @TopicId";
+                        WHERE c.TopicId = @TopicId ORDER BY c.Date DESC";
                 var comments = db.Query<Comment>(sql, new { TopicId }).ToList();
 
                 var topic = Get(TopicId);

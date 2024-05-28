@@ -116,7 +116,7 @@ CREATE TABLE Comments(
 	[UserId] [INT] NOT NULL,
 	[TopicId] [INT] NOT NULL,
 	[Text] [NText] NOT NULL,
-	[Date] [DATE] NOT NULL,
+	[Date] [DATETIME] NOT NULL,
 	[ParentId] [INT] NULL,
 	CONSTRAINT PK_Comments_Id PRIMARY KEY (Id),
 	CONSTRAINT FK_Comments_Users FOREIGN KEY (UserId) REFERENCES Users (Id)

@@ -13,7 +13,7 @@
                         <div class="col-lg-11 col-12 mb-5">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Homepage</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Topics")">Алгоритмҳо</a></li>
 
                                     <li class="breadcrumb-item active" aria-current="page">@Model.Item1.Name</li>
                                 </ol>
@@ -21,12 +21,6 @@
 
                             <h2 class="text-white">@Model.Item1.Name</h2>
                         </div>
-
-                        @*<div class="col-lg-5 col-12">
-                            <div class="topics-detail-block bg-white shadow-lg">
-                                <img src="~/images/topics/undraw_Remote_design_team_re_urdx.png" class="topics-detail-block-image img-fluid">
-                            </div>
-                        </div>*@
 
                     </div>
                 </div>
@@ -171,66 +165,83 @@
         xhr.onreadystatechange = handleFunc;
 
         function handleFunc() {
-            if(xhr.readyState === 4 && xhr.status === 200) {
-	            var container = document.getElementById("comments-container");
-                container.innerHTML = xhr.responseText + container.innerHTML;
+            if(xhr.readyState === 4) {
+                if (xhr.status === 200) {
+	                var container = document.getElementById("comments-container");
+                    var res = xhr.responseText + container.innerHTML;
+                    container.innerHTML = res;
 
-	            //ul.appendChild(createElementFromHTML(xhr.responseText));
-	            //document.getElementById("text").value = '';
+	                //ul.appendChild(createElementFromHTML(xhr.responseText));
+	                //document.getElementById("text").value = '';
 
-	            var div = document.getElementById("nocomments");
-	            if (typeof(div) != 'undefined' && div != null)
-	            {
-		            div.parentNode.removeChild(div);
-	            }
-            } else {
-	            alert(xhr.responseText);
+	                var div = document.getElementById("nocomments");
+	                if (typeof(div) != 'undefined' && div != null)
+	                {
+		                div.parentNode.removeChild(div);
+	                }
+                } else {
+                    alert(xhr.status);
+	                alert(xhr.responseText);
+                }
             }
         };
     }
 </script>
 
 
-<section class="section-padding section-bg">
-    <div class="container">
-        <div class="row justify-content-center">
+@if (@HttpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier) != null)
+{
+    <section class="section-padding section-bg">
+        <div class="container">
+            <div class="row justify-content-center">
 
-            <div class="col-lg-6 col-12">
-                <div class="custom-form contact-form">
-                    <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="custom-form contact-form">
+                        <div class="row">
 
-                        <div class="col-lg-12 col-12 m-auto">
-                            <h4 class="mb-4">Дар бораи алгоритм шарҳ нависед</h4>
-                        </div>
-
-                        <div class="col-lg-12 col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" id="message" name="message" placeholder="Шарҳи матн"></textarea>
-
-                                <label for="floatingTextarea">Шарҳи матн</label>
+                            <div class="col-lg-12 col-12 m-auto">
+                                <h4 class="mb-4">Дар бораи алгоритм шарҳ нависед</h4>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-12 ms-auto">
-                            <button onclick="addComment()" class="form-control">Фиристондан</button>
-                        </div>
+                            <div class="col-lg-12 col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="message" name="message" placeholder="Шарҳи матн"></textarea>
 
+                                    <label for="floatingTextarea">Шарҳи матн</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-12 ms-auto">
+                                <button onclick="addComment()" class="form-control">Фиристондан</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
 
+
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+} else
+{
+                
+}
 
 
 
 <section class="section-padding section-bg">
     <div class="container">
-        <div class="row justify-content-center comments-container">
+        <div class="row justify-content-center" id="comments-container">
+
+            <div class="col-lg-8 col-12 m-auto">
+                <h3 class="mb-4">Шарҳҳои алгоритм</h3>
+                <br/>
+            </div>
+
             @if(Model.Item3.Count == 0)
             {
-                <div class="nocomments col-lg-8 col-12 m-auto">
+                <div id="nocomments" class="col-lg-8 col-12 m-auto">
                     <h4 class="mb-4">Ҳанӯз шарҳ нест</h4>
                     <p>Аввалин шуда шарҳ нависед</p>
                 </div>
