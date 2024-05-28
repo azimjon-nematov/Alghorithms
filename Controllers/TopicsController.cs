@@ -19,7 +19,7 @@ namespace Alghorithms.Controllers
         [HttpGet("Topics/Search/{Name}")]
         public IActionResult Search([FromRoute] string Name)
         {
-            ViewData["Title"] = "Результаты по запросу '" + Name + "'";
+            ViewData["Title"] = "Натиҷаҳои дархост '" + Name + "'";
             return View("Index", repo.Search(Name));
         }
 
