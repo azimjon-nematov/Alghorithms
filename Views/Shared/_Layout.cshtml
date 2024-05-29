@@ -55,9 +55,9 @@
                                 <a class="nav-link" href="@Url.Action("Index", "Topics")">Алгоритмҳо</a>
                             </li>
 
-                            <li class="nav-item">
+                            @*<li class="nav-item">
                                 <a class="nav-link" href="@Url.Action("InDevelopment", "Home")">Машқҳо</a>
-                            </li>
+                            </li>*@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="@Url.Action("InDevelopment", "Home")">Тамос</a>
@@ -67,12 +67,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="@Url.Action("Profile", "Users")">Профил</a>
                             </li>
-                                @if (@HttpContextAccessor.HttpContext?.User.IsInRole("True") ?? false)
+                                @*@if (@HttpContextAccessor.HttpContext?.User.IsInRole("True") ?? false)
                                 {
                                 <li class="nav-item">
                                     <a class="nav-link" href="@Url.Action("Profile", "Users")">AdminPanel</a>
                                 </li>
-                                }
+                                }*@
                             } 
                             else 
                             {
