@@ -156,8 +156,17 @@ strong {
     padding-top: 100px;
 }
 
+.section-normal-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.section-normal-padding-top {
+    padding-top: 100px;
+}
+
 .section-bg {
-  background-color: var(--section-bg-color);
+    background-color: var(--section-bg-color);
 }
 
 .section-overlay {
@@ -1103,6 +1112,15 @@ blockquote {
 
   .section-padding-top {
         padding-top: 50px;
+  }
+
+  .section-normal-padding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .section-normal-padding-top {
+    padding-top: 50px;
   }
 
   .navbar {
