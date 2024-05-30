@@ -168,17 +168,25 @@
             if(xhr.readyState === 4) {
                 if (xhr.status === 200) {
 	                var container = document.getElementById("comments-container");
+
+	                var commentHeader = document.getElementById("commentHeader");
+	                var div = document.getElementById("nocomments");
+
+	                if (typeof(div) != 'undefined' && div != null)
+	                {
+		                div.parentNode.removeChild(div);
+	                }
+	                if (typeof(commentHeader) != 'undefined' && commentHeader != null)
+	                {
+		                commentHeader.parentNode.removeChild(commentHeader);
+	                }
+                    var header = '<div id="commentHeader" class="col-lg-8 col-12 m-auto"><h3 class="mb-4">Шарҳҳои алгоритм</h3><br/>    </div>'
+
                     var res = xhr.responseText + container.innerHTML;
                     container.innerHTML = res;
 
 	                //ul.appendChild(createElementFromHTML(xhr.responseText));
 	                //document.getElementById("text").value = '';
-
-	                var div = document.getElementById("nocomments");
-	                if (typeof(div) != 'undefined' && div != null)
-	                {
-		                div.parentNode.removeChild(div);
-	                }
                 } else {
                     alert(xhr.status);
 	                alert(xhr.responseText);
@@ -234,7 +242,7 @@
     <div class="container">
         <div class="row justify-content-center" id="comments-container">
 
-            <div class="col-lg-8 col-12 m-auto">
+            <div id="commentHeader" class="col-lg-8 col-12 m-auto">
                 <h3 class="mb-4">Шарҳҳои алгоритм</h3>
                 <br/>
             </div>
