@@ -31,7 +31,7 @@ VALUES(N'Алгоритмҳои ҷустуҷӯ', 1, NULL, 1)
 	 ,(N'Алгоритҳо барои кор бо графҳо', 1, NULL, 3)
 	 ,(N'Ду нишондод', 0, NULL, 4)
 	 ,(N'Жадные алгоритмы', 1, NULL, 5)
-	 ,(N'Быстрое возведение в степень', 1, NULL, 6)
+	 ,(N'Экспонентатсияи зуд', 1, NULL, 6)
 
 GO
 
@@ -155,8 +155,16 @@ VALUES(1, 1, N'def search(arr, target):'+char(10)+N'    for i in range(0, len(ar
 ,(8, 1, N'def bfs(graph, start):'+char(10)+N'    queue = [start]'+char(10)+N'    visited = set()'+char(10)+N'    while queue:'+char(10)+N'        current = queue.pop(0)'+char(10)+N'        visited.add(current)'+char(10)+N'        for neighbor in graph[current]:'+char(10)+N'            if neighbor not in visited:'+char(10)+N'                queue.append(neighbor)'+char(10)+N''+char(10)+N'graph = {'+char(10)+N'    "A": ["B", "C"],'+char(10)+N'    "B": ["D", "E"],'+char(10)+N'    "C": ["F"],'+char(10)+N'    "D": [],'+char(10)+N'    "E": [],'+char(10)+N'    "F": [],'+char(10)+N'}'+char(10)+N'bfs(graph, "A")')
 
 
+GO
 
 
+INSERT INTO Users([Name], IsAdmin, [Login], PasswordHash)
+VALUES(N'Azimjon', 0, N'anematov2002@gmail.com', N'123')
+,(N'Акмалхон Бурхонов', 0, N'b@gmail.com', N'123')
+,(N'Шаҳзод', 0, N'shahanshohov01@gmail.com', N'123')
+,(N'admin', 1, N'admin', N'admin')
+
+--,(N'', 0, '', '')
 
 -- def search(arr, target):'+char(10)+'    for i in range(0, len(arr)):'+char(10)+'        if item== target:'+char(10)+'            return i'+char(10)+'    return -1'+char(10)+''+char(10)+'# Пример использования'+char(10)+'arr = [1, 3, 5, 7, 9, 11, 13]'+char(10)+'target = 7'+char(10)+'result = search(arr, target)'+char(10)+'if result != -1:'+char(10)+'    print(f"Элемент найден в позиции {result}.")'+char(10)+'else:'+char(10)+'    print("Элемент не найден.")
 -- def search(arr, target):'+char(10)+'    for item in arr:'+char(10)+'        if item == target:'+char(10)+'            return true'+char(10)+'    return false'+char(10)+''+char(10)+'# Пример использования'+char(10)+'arr = ["Alex", "Bob", "Martin", "Sven"]'+char(10)+'target = "Sven"'+char(10)+'result = search(arr, target)'+char(10)+'if result:'+char(10)+'    print(f"Элемент найден.")'+char(10)+'else:'+char(10)+'    print("Элемент не найден.")
