@@ -27,121 +27,121 @@
             </header>
 
 
-            <section class="topics-detail-section section-padding" id="topics-detail">
-                <div class="container">
-                    <div class="row">
+<section class="topics-detail-section section-padding" id="topics-detail">
+    <div class="container">
+        <div class="row">
 
-                    @foreach (Content content in Model.Item2)
-                    {
-                        <div class="col-lg-8 col-12 m-auto">
-                            @if(content.ContentTypeName == "Title")
-                            {
-                                <h3 class="mb-4">@content.Data</h3>
-                            }
-                            else if(content.ContentTypeName == "Text")
-                            {
-                                <p>@content.Data</p>
-                            }
-                            else if(content.ContentTypeName == "Subtitle")
-                            {
+        @foreach (Content content in Model.Item2)
+        {
+            <div class="col-lg-8 col-12 m-auto">
+                @if(content.ContentTypeName == "Title")
+                {
+                    <h3 class="mb-4">@content.Data</h3>
+                }
+                else if(content.ContentTypeName == "Text")
+                {
+                    <p>@content.Data</p>
+                }
+                else if(content.ContentTypeName == "Subtitle")
+                {
                                 
-                            }
-                            else if(content.ContentTypeName == "Image")
-                            {
-                                <div class="row my-4">
-                                    <img src="@content.Data" class="topics-detail-block-image img-fluid">
-                                </div>
-                            }
-                            else if(content.ContentTypeName == "MarkedText")
-                            {
-                                var items = content.Data.Split('\n');
-                                <ul>
-                                @foreach (var item in items)
-                                {
-                                    <li>@item</li>
-                                }
-                                </ul>
-                            }
-                            else if(content.ContentTypeName == "Code")
-                            {
-                                    @*@content.codes.First().LanguageName <br>
-                                    @Html.Raw(@content.codes.First().Code)*@
-
-                                    <script>
-                                        var codes@(content.CodeListId) =[
-                                            `@Html.Raw(@content.codes.First().Code)`
-                                            @for(var i = 1; i < @content.codes.Count; ++i)
-                                            {
-                                            @(",`");@Html.Raw(@content.codes[i].Code);@("`");
-                                            }
-                                        ];
-
-                                        function selectCode@(content.CodeListId)() {
-                                            var myselect = document.getElementById("codeselect@(content.CodeListId)");
-                                            var index = myselect.selectedIndex;
-                                            index = (index == -1 || index == undefined) ? 0 : index;
-                                            document.getElementById("codeviewer@(content.CodeListId)").innerText = codes@(content.CodeListId)[index];
-                                        }
-
-                                    </script>
-                                    
-                                    <div class="syntaxhighlighter">
-                                        <div class="toolbar">
-                                            <select id="codeselect@(content.CodeListId)" onchange="selectCode@(content.CodeListId)()">
-                                            @for (var i=0; i < content.codes.Count; i++)
-                                            {    
-                                                <option value="@content.codes[i].LanguageId">
-                                                    @content.codes[i].LanguageName
-                                                </option>
-                                            }
-                                            </select>
-                                        </div>
-                                        <div style="padding: 10px">
-<span class="codetest" id="codeviewer@(content.CodeListId)"></span>
-                                        </div>
-                                        
-                                    </div>
-
-                                    <script>
-                                        selectCode@(content.CodeListId)();
-                                    </script>
-
-                            }
-                            else if(content.ContentTypeName == "Warning")
-                            {
-                                <blockquote>@content.Data</blockquote>
-                            }
-
-                        </div>
+                }
+                else if(content.ContentTypeName == "Image")
+                {
+                    <div class="row my-4">
+                        <img src="@content.Data" class="topics-detail-block-image img-fluid">
+                    </div>
+                }
+                else if(content.ContentTypeName == "MarkedText")
+                {
+                    var items = content.Data.Split('\n');
+                    <ul>
+                    @foreach (var item in items)
+                    {
+                        <li>@item</li>
                     }
+                    </ul>
+                }
+                else if(content.ContentTypeName == "Code")
+                {
+                        @*@content.codes.First().LanguageName <br>
+                        @Html.Raw(@content.codes.First().Code)*@
 
-                        @*<div class="col-lg-8 col-12 m-auto">
-                            <h3 class="mb-4">Introduction to Web Design</h3>
+                        <script>
+                            var codes@(content.CodeListId) =[
+                                `@Html.Raw(@content.codes.First().Code)`
+                                @for(var i = 1; i < @content.codes.Count; ++i)
+                                {
+                                @(",`");@Html.Raw(@content.codes[i].Code);@("`");
+                                }
+                            ];
 
-                            <p>So how can you stand out, do something unique and interesting, build an online business, and get paid enough to change life. Please visit TemplateMo website to download free website templates.</p>
+                            function selectCode@(content.CodeListId)() {
+                                var myselect = document.getElementById("codeselect@(content.CodeListId)");
+                                var index = myselect.selectedIndex;
+                                index = (index == -1 || index == undefined) ? 0 : index;
+                                document.getElementById("codeviewer@(content.CodeListId)").innerText = codes@(content.CodeListId)[index];
+                            }
 
-                            <p><strong>There are so many ways to make money online</strong>. Below are several platforms you can use to find success. Keep in mind that there is no one path everyone can take. If that were the case, everyone would have a million dollars.</p>
-
-                            <blockquote>
-                                Freelancing your skills isn’t going to make you a millionaire overnight.
-                            </blockquote>
-
-                            <div class="row my-4">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <img src="~/images/businesswoman-using-tablet-analysis.jpg" class="topics-detail-block-image img-fluid">
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-12 mt-4 mt-lg-0 mt-md-0">
-                                    <img src="~/images/colleagues-working-cozy-office-medium-shot.jpg" class="topics-detail-block-image img-fluid">
-                                </div>
+                        </script>
+                                    
+                        <div class="syntaxhighlighter">
+                            <div class="toolbar">
+                                <select id="codeselect@(content.CodeListId)" onchange="selectCode@(content.CodeListId)()">
+                                @for (var i=0; i < content.codes.Count; i++)
+                                {    
+                                    <option value="@content.codes[i].LanguageId">
+                                        @content.codes[i].LanguageName
+                                    </option>
+                                }
+                                </select>
                             </div>
+                            <div style="padding: 10px">
+<span class="codetest" id="codeviewer@(content.CodeListId)"></span>
+                            </div>
+                                        
+                        </div>
 
-                            <p>Most people start with freelancing skills they already have as a side hustle to build up income. This extra cash can be used for a vacation, to boost up savings, investing, build business.</p>
-                        </div>*@
+                        <script>
+                            selectCode@(content.CodeListId)();
+                        </script>
 
+                }
+                else if(content.ContentTypeName == "Warning")
+                {
+                    <blockquote>@content.Data</blockquote>
+                }
+
+            </div>
+        }
+
+            @*<div class="col-lg-8 col-12 m-auto">
+                <h3 class="mb-4">Introduction to Web Design</h3>
+
+                <p>So how can you stand out, do something unique and interesting, build an online business, and get paid enough to change life. Please visit TemplateMo website to download free website templates.</p>
+
+                <p><strong>There are so many ways to make money online</strong>. Below are several platforms you can use to find success. Keep in mind that there is no one path everyone can take. If that were the case, everyone would have a million dollars.</p>
+
+                <blockquote>
+                    Freelancing your skills isn’t going to make you a millionaire overnight.
+                </blockquote>
+
+                <div class="row my-4">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <img src="~/images/businesswoman-using-tablet-analysis.jpg" class="topics-detail-block-image img-fluid">
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-12 mt-4 mt-lg-0 mt-md-0">
+                        <img src="~/images/colleagues-working-cozy-office-medium-shot.jpg" class="topics-detail-block-image img-fluid">
                     </div>
                 </div>
-            </section>
+
+                <p>Most people start with freelancing skills they already have as a side hustle to build up income. This extra cash can be used for a vacation, to boost up savings, investing, build business.</p>
+            </div>*@
+
+        </div>
+    </div>
+</section>
 
 
 <script type="text/javascript">
