@@ -10,9 +10,9 @@ namespace Alghorithms.Models
         List<User> GetUsers();
         bool IsLoginFree(string login);
         User? Register(User user);
-        //bool Create(User user);
-        //bool Update(User user);
-        //ResponseResult Delete(int id);
+        User? Create(User user);
+        User? Update(User user);
+        bool Delete(int id);
         User? LogIn(string login, string password);
     }
 
@@ -22,6 +22,16 @@ namespace Alghorithms.Models
         public UserRepository(string connectionString)
         {
             this.connectionString = connectionString;
+        }
+
+        public User? Create(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public User? Get(int id)
@@ -76,6 +86,11 @@ namespace Alghorithms.Models
                 }
                 return null;
             }
+        }
+
+        public User? Update(User user)
+        {
+            throw new NotImplementedException();
         }
     }
 }

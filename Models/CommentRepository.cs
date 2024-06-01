@@ -6,9 +6,11 @@ using Dapper;
 namespace Alghorithms.Models
 {
 	public interface ICommentRepository
-	{
+    {
         Comment? Create(int topicId, int userId, string text);
-	}
+        Comment? Edit(int commentId, int topicId, int userId, string text);
+        bool Delete(int commentId);
+    }
 
     public class CommentRepository : ICommentRepository
     {
@@ -35,6 +37,16 @@ namespace Alghorithms.Models
                 }
                 return null;
             }
+        }
+
+        public Comment? Edit(int commentId, int topicId, int userId, string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int commentId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

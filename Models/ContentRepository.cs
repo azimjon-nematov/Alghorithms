@@ -7,6 +7,9 @@ namespace Alghorithms.Models
     public interface IContentRepository
     {
         List<Content> GetTopicContent(int TopicId);
+        Content? Get(int contentId);
+        Content? Edit(Content content);
+        bool Delte(int contentId);
 
     }
     public class ContentRepository : IContentRepository // TODO: DELETE OR FIX
@@ -15,6 +18,21 @@ namespace Alghorithms.Models
         public ContentRepository(string connectionString)
         {
             this.connectionString = connectionString;
+        }
+
+        public bool Delte(int contentId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Content? Edit(Content content)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Content? Get(int contentId)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Content> GetTopicContent(int TopicId)

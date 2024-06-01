@@ -9,6 +9,8 @@ namespace Alghorithms.Models
     {
         List<Topic> GetAll();
         Topic? Get(int id);
+        Topic? Edit(Topic topic);
+        bool Delete(int topicId);
         List<Topic> Search(string Name);
         (Topic, List<Content>, List<Comment>) GetTopicContent(int TopicId);
     }
@@ -42,7 +44,7 @@ namespace Alghorithms.Models
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var topic = db.Query<TopicDetail>("SELECT * FROM Topics WHERE Id = @id", new { id })
+                var topic = db.Query<Topic>("SELECT * FROM Topics WHERE Id = @id", new { id })
                     .ToList().First();
 
                 //topic;
@@ -94,6 +96,16 @@ namespace Alghorithms.Models
 
                 return (topic!, contentList, comments);
             }
+        }
+
+        public bool Delete(int topicId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Topic? Edit(Topic topic)
+        {
+            throw new NotImplementedException();
         }
     }
 }
