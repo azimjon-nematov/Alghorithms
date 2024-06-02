@@ -27,10 +27,25 @@ namespace Alghorithms.Controllers
             return View(user!);
         }
 
+        [Authorize]
         public IActionResult SignOutt()
         {
             HttpContext.SignOutAsync();
             return Redirect("/");
         }
+
+        [Authorize(Roles = "True")]
+        [HttpGet("Users/Delete/{userId}")]
+        public IActionResult Delete([FromRoute] int userId)
+        {
+            if (repo.Delete(userId))
+            {
+                string referer = Request.Headers["Referer"].ToString();
+                return Redirect(referer);
+            }
+            return BadRequest();
+        }
+
+
     }
 }

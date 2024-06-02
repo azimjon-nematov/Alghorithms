@@ -1,5 +1,6 @@
 ﻿using System;
 using Alghorithms.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alghorithms.Controllers
@@ -12,6 +13,7 @@ namespace Alghorithms.Controllers
             repo = r;
 		}
 
+        [Authorize]
         public IActionResult Create(int topicId, int userId, string text)
         {
             var comment = repo.Create(topicId, userId, text);

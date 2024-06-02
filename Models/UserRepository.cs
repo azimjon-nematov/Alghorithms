@@ -45,7 +45,10 @@ namespace Alghorithms.Models
 
         public List<User> GetUsers()
         {
-            throw new NotImplementedException();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                return db.Query<User>("SELECT * from Users").ToList();
+            }
         }
 
         public bool IsLoginFree(string login)
