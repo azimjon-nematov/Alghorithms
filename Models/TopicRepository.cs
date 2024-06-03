@@ -9,7 +9,7 @@ namespace Alghorithms.Models
     {
         List<Topic> GetAll();
         List<Topic> GetParents();
-        List<Topic> GetChildren();
+        List<Topic> GetChildren(int topicId);
         Topic? Get(int id);
         Topic? Edit(Topic topic);
         bool Delete(int topicId);
@@ -51,11 +51,11 @@ namespace Alghorithms.Models
             }
         }
 
-        public List<Topic> GetChildren()
+        public List<Topic> GetChildren(int topicId)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var topics = db.Query<Topic>("SELECT * FROM Topics WHERE ParentId is NULL").ToList();
+                var topics = db.Query<Topic>("SELECT * FROM Topics WHERE Id = @topicId", new { topicId }).ToList();
                 return topics;
             }
         }

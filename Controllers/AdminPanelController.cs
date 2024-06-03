@@ -19,5 +19,11 @@ namespace Alghorithms.Controllers
             return View(repo.GetParents());
         }
 
+        public IActionResult GetChildren(int topicId)
+        {
+            return View(repo.GetChildren(topicId));
+        }
+
+
     }
 }

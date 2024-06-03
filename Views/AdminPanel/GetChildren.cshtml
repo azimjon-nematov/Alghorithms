@@ -37,17 +37,10 @@
                         <tr>
                             <td>@topic.Id</td>
                             <td>@topic.Name</td>
-                            <td>@(topic.HasChildren ? "Нет" : "Да")</td>
+                            <td>@topic.HasChildren</td>
                             <td>@topic.ParentId</td>
                             <td>@topic.Order</td>
-                            <td>
-                                @if (topic.HasChildren) {
-                                    <a href="@Url.Action("EditUser", "Topics", new { id = topic.Id})" class="btn btn-default">Перейти к контенту</a>
-                                }
-                                else {
-                                    <a href="@Url.Action("GetChildren", "Topics", new { id = topic.Id})" class="btn btn-default">Перейти к дочерним группам</a>
-                                }
-                            </td>
+                            <td><a href="@Url.Action("EditUser", "Topics", new { id = topic.Id})" class="btn btn-default">Перейти к контенту</a></td>
                             <td><a href="@Url.Action("EditUser", "Users", new { userId = topic.Id})" class="btn btn-default">Изменить</a></td>
                             <td><a href="javascript:;" onclick="userId = @topic.Id" data-toggle="modal" data-target="#userDeleteModal" class="btn btn-link">Удалить</a></td>
                         </tr>
