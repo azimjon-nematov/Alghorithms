@@ -9,7 +9,7 @@ namespace Alghorithms.Models
     {
         List<Topic> GetAll();
         List<Topic> GetParents();
-        List<Topic> GetParents();
+        List<Topic> GetChildren();
         Topic? Get(int id);
         Topic? Edit(Topic topic);
         bool Delete(int topicId);
