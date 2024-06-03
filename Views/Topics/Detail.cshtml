@@ -40,7 +40,7 @@
                 }
                 else if(content.ContentTypeName == "Text")
                 {
-                    <p>@content.Data</p>
+                    <p align="justify">@content.Data</p>
                 }
                 else if(content.ContentTypeName == "Subtitle")
                 {
@@ -58,7 +58,7 @@
                     <ul>
                     @foreach (var item in items)
                     {
-                        <li>@item</li>
+                        <li><p align="justify">@item</p></li>
                     }
                     </ul>
                 }
