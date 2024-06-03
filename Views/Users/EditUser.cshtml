@@ -1,48 +1,52 @@
-﻿@{
+﻿@using Alghorithms.Models
+@{
     Layout = "/Views/Shared/Admin.cshtml";
 }
+@model User
 
 <div class="templatemo-content-wrapper">
 	<div class="templatemo-content">
-	    <ol class="breadcrumb">
+	    @*<ol class="breadcrumb">
 	        <li><a href="index.html">Admin Panel</a></li>
 	        <li><a href="#">Preferences</a></li>
 	        <li class="active">Form Controls</li>
-	    </ol>
-	    <h1>Preferences</h1>
-	    <p class="margin-bottom-15">Here goes another form and form controls.</p>
+	    </ol>*@
+	    <h1>Редактировать пользователя</h1>
+	    @*<p class="margin-bottom-15">Here goes another form and form controls.</p>*@
 	    <div class="row">
 	        <div class="col-md-12">
-	            <form role="form" id="templatemo-preferences-form">
+	            <form role="form" id="templatemo-preferences-form" method="post" action="@Url.Action("EditUser", "Users")">
 	                <div class="row">
 	                    <div class="col-md-6 margin-bottom-15">
-	                        <label for="firstName" class="control-label">First Name</label>
-	                        <input type="text" class="form-control" id="firstName" value="John">                  
+	                        <label>Id</label>
+	                        <input type="text" class="form-control" name="Id" id="userId" value="@Model.Id" readonly>  
+	                        @*<p class="form-control-static" id="userId">@Model.Id</p>*@
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
-	                        <label for="lastName" class="control-label">Last Name</label>
-	                        <input type="text" class="form-control" id="lastName" value="Henry">                 
+	                        <label>Статус</label>
+	                        <input type="text" class="form-control" name="IsAdmin" id="isAdmin" value="@(Model.IsAdmin ? "Пользователь" : "Админ")" readonly>  
+	                        @*<p class="form-control-static" id="isAdmin">@(Model.IsAdmin ? "Пользователь" : "Админ")</p>*@
 	                    </div>
 	                </div>
 	                <div class="row">
 	                    <div class="col-md-6 margin-bottom-15">
-	                        <label>Username</label>
-	                        <p class="form-control-static" id="username">@@admin</p>
+	                        <label for="firstName" class="control-label">Имя</label>
+	                        <input type="text" class="form-control" name="Name" id="userName" value="@Model.Name">
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
-	                        <label>Email address</label>
-	                        <p class="form-control-static" id="email">admin@company.com</p>
+	                        <label>Логин</label>
+	                        <input type="text" class="form-control" name="Login" id="login" value="@Model.Login">  
 	                    </div>
 	                </div>
 	                <div class="row">
 	                    <div class="col-md-6 margin-bottom-15">
-	                        <label for="currentPassword">Current Password</label>
-	                        <input type="password" class="form-control" id="currentPassword" value="********" disabled>  
+	                        <label for="currentPassword">Пароль</label>
+	                        <input type="text" @*type="password"*@ name="PasswordHash" class="form-control" id="currentPassword" value="@Model.PasswordHash" @*disabled*@>  
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
 	                    </div>
 	                </div>
-	                <div class="row">
+	                @*<div class="row">
 	                    <div class="col-md-6 margin-bottom-15">
 	                        <label for="password_1">New Password</label>
 	                        <input type="password" class="form-control" id="password_1" placeholder="New Password">  
@@ -51,8 +55,9 @@
 	                        <label for="password_2">Confirm New Password</label>
 	                        <input type="password" class="form-control" id="password_2" placeholder="Confirm New Password">  
 	                    </div>
-	                </div>
-	                <div class="has-success has-feedback">
+	                </div>*@
+
+	                @*<div class="has-success has-feedback">
 	                    <div class="row">
 	                        <div class="col-md-12 margin-bottom-15">
 	                            <label class="control-label" for="inputSuccess">Input with success</label>
@@ -74,8 +79,9 @@
 	                        <input type="text" class="form-control" id="inputError">
 	                        <span class="fa fa-times form-control-feedback"></span>
 	                    </div>
-	                </div>
-	                <div class="row">
+	                </div>*@
+	                
+					@*<div class="row">
 	                    <div class="col-md-12 margin-bottom-15">
 	                        <label for="notes">Notes</label>
 	                        <textarea class="form-control" rows="3" id="notes"></textarea>
@@ -165,11 +171,12 @@
 	                        <input type="file" id="exampleInputFile">
 	                        <p class="help-block">You can upload file here.</p>
 	                    </div>
-	                </div>
+	                </div>*@
+
 	                <div class="row templatemo-form-buttons">
 	                    <div class="col-md-12">
-	                        <button type="submit" class="btn btn-primary">Update</button>
-	                        <button type="reset" class="btn btn-default">Reset</button>    
+	                        <button type="submit" class="btn btn-primary">Изменить</button>
+	                        @*<button type="reset" class="btn btn-default">Reset</button>*@
 	                    </div>
 	                </div>
 	            </form>

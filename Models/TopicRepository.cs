@@ -8,6 +8,8 @@ namespace Alghorithms.Models
     public interface ITopicRepository
     {
         List<Topic> GetAll();
+        List<Topic> GetParents();
+        List<Topic> GetParents();
         Topic? Get(int id);
         Topic? Edit(Topic topic);
         bool Delete(int topicId);
@@ -36,6 +38,24 @@ namespace Alghorithms.Models
                     }
                 }
                 
+                return topics;
+            }
+        }
+
+        public List<Topic> GetParents()
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var topics = db.Query<Topic>("SELECT * FROM Topics WHERE ParentId is NULL").ToList();
+                return topics;
+            }
+        }
+
+        public List<Topic> GetChildren()
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var topics = db.Query<Topic>("SELECT * FROM Topics WHERE ParentId is NULL").ToList();
                 return topics;
             }
         }

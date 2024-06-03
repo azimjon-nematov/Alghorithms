@@ -93,7 +93,14 @@ namespace Alghorithms.Models
 
         public User? Update(User user)
         {
-            throw new NotImplementedException();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sqlQuery = "UPDATE Users SET Name = @Name, Login = @Login, PasswordHash = @PasswordHash WHERE Id = @Id";
+                var res = db.Execute(sqlQuery, user);
+                if (res == 1)
+                    return user;
+                return null;
+            }
         }
     }
 }

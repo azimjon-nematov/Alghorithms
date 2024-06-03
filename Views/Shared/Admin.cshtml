@@ -39,7 +39,7 @@
 	                        </form>
 	                    </li>*@
 	                    <li>
-							<a href="index.html">
+							<a href="@Url.Action("Index", "AdminPanel")">
 								<i class="fa fa-home"></i>
 								Dashboard
 							</a>
@@ -65,10 +65,10 @@
 							</a>
 						</li>
 	                    <li>
-							<a href="@Url.Action("AllUsers", "AdminPanel")">
+							<a href="@Url.Action("AllUsers", "Users")">
 								<i class="fa fa-users"></i>
 								@*<span class="badge pull-right">NEW</span>*@
-								Manage Users
+								Все пользователи
 							</a>
 						</li>
 	                    <li>
@@ -85,9 +85,9 @@
 							</a>
 						</li>
 	                    <li>
-							<a href="javascript:;" data-toggle="modal" data-target="#confirmModal">
+							<a href="@Url.Action("Index", "Home")" @*href="javascript:;" data-toggle="modal" data-target="#confirmModal"*@>
 								<i class="fa fa-sign-out"></i>
-								Sign Out
+								Выйти из админпанели
 							</a>
 						</li>
 	                </ul>

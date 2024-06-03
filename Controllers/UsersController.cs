@@ -27,6 +27,32 @@ namespace Alghorithms.Controllers
             return View(user!);
         }
 
+        [Authorize(Roles = "True")]
+        public IActionResult EditUser(int userId)
+        {
+            var user = repo.Get(userId);
+            if (user == null)
+                return NotFound();
+
+            return View(user!);
+        }
+
+        [Authorize(Roles = "True")]
+        [HttpPost]
+        public IActionResult EditUser(User user)
+        {
+            if (user == null)
+                return NotFound();
+
+            var u = repo.Update(user);
+            if (u == null)
+            {
+                return Redirect(Url.Action("EditUser", "Users", new { userId = user.Id})!);
+            }
+
+            return Redirect(Url.Action("AllUsers", "Users")!);
+        }
+
         [Authorize]
         public IActionResult SignOutt()
         {
@@ -44,6 +70,11 @@ namespace Alghorithms.Controllers
                 return Redirect(referer);
             }
             return BadRequest();
+        }
+
+        public IActionResult AllUsers()
+        {
+            return View(repo.GetUsers());
         }
 
 

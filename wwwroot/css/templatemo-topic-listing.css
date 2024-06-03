@@ -950,8 +950,9 @@ blockquote {
     padding-top: 13px;
     padding-bottom: 13px;
     padding-left: 20px;
+    padding-right: 20px;
     outline: none;
-    width: 120px;
+    width: 130px;
     border-radius: 100px;
 }
 

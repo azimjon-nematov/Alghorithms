@@ -8,25 +8,15 @@ namespace Alghorithms.Controllers
     public class AdminPanelController : Controller
     {
 
-        IUserRepository _userRepository;
-        public AdminPanelController(IUserRepository userRepository)
+        ITopicRepository repo;
+        public AdminPanelController(ITopicRepository r)
         {
-            _userRepository = userRepository;
+            repo = r;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult AllUsers()
-        {
-            return View(_userRepository.GetUsers());
-        }
-
-        public IActionResult EditUser()
-        {
-            return View();
+            return View(repo.GetParents());
         }
 
     }

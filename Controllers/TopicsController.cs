@@ -28,5 +28,11 @@ namespace Alghorithms.Controllers
             var contents = repo.GetTopicContent(Id);
             return View(contents);
         }
+
+        public IActionResult GetChildren([FromRoute] int Id)
+        {
+            var contents = repo.GetTopicContent(Id);
+            return View(contents);
+        }
     }
 }
