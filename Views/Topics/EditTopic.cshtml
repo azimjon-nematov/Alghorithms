@@ -1,0 +1,58 @@
+﻿@using Alghorithms.Models
+@{
+    Layout = "/Views/Shared/Admin.cshtml";
+}
+@model Topic
+
+
+<div class="templatemo-content-wrapper">
+	<div class="templatemo-content">
+	    <h1>Редактировать Алгоритм</h1>
+	    <div class="row">
+	        <div class="col-md-12">
+	            <form role="form" id="templatemo-preferences-form" method="post" action="@Url.Action("EditTopic", "Topics")">
+	                <div class="row">
+	                    <div class="col-md-6 margin-bottom-15">
+	                        <label>Id</label>
+	                        <input type="text" class="form-control" name="Id" id="topicId" value="@Model.Id" readonly>  
+	                        @*<p class="form-control-static" id="userId">@Model.Id</p>*@
+	                    </div>
+	                    <div class="col-md-6 margin-bottom-15">
+	                        <label>ID группы</label>
+	                        <input type="text" class="form-control" name="ParentId" id="ParentId" value="@Model.ParentId" >
+	                        @*<p class="form-control-static" id="isAdmin">@(Model.IsAdmin ? "Пользователь" : "Админ")</p>*@
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-md-6 margin-bottom-15">
+	                        <label for="firstName" class="control-label">Имя</label>
+	                        <input type="text" class="form-control" name="Name" id="userName" value="@Model.Name">
+	                    </div>
+	                    <div class="col-md-6 margin-bottom-15">
+	                        <label>Порядок</label>
+	                        <input type="text" class="form-control" name="Order" id="Order" value="@Model.Order">  
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-md-6 margin-bottom-15">
+	                        <label for="currentPassword">Имеет контент</label>
+	                        <input type="radio" name="HasChildren" class="form-control" id="HasChildren" value="1" @(Model.HasChildren ? "checked" : "") >
+							<input type="radio" name="HasChildren" class="form-control" id="HasChildren" value="0"  @(!Model.HasChildren ? "checked" : "")>
+	                    </div>
+	                    <div class="col-md-6 margin-bottom-15">
+	                        @*<label for="currentPassword">Не имеет контент</label>
+	                        <input type="radio" name="HasChildren" class="form-control" id="HasChildren" value="0"  @(!Model.HasChildren ? "checked" : "")>*@
+	                    </div>
+	                </div>
+	                
+
+	                <div class="row templatemo-form-buttons">
+	                    <div class="col-md-12">
+	                        <button type="submit" class="btn btn-primary">Изменить</button>
+	                    </div>
+	                </div>
+	            </form>
+	        </div>
+	    </div>
+	</div>
+</div>

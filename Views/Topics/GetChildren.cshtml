@@ -1,0 +1,49 @@
+﻿@using Alghorithms.Models
+@{
+    Layout = "/Views/Shared/Admin.cshtml";
+}
+@model List<Topic>
+
+<div class="templatemo-content-wrapper">
+    <div class="templatemo-content">
+        <h1 class="margin-bottom-30">Админпанель</h1>
+        
+        <div class="table-responsive">
+            <div class="btn-group pull-right" id="templatemo_sort_btn" @*style="margin-bottom: 0px"*@>
+                <button type="button" class="btn btn-default">Добавить</button>
+            </div>
+            <h4 class="margin-bottom-15">New Users Table</h4>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Наименование</th>
+                        <th>Является группой</th>
+                        <th>ID группы</th>
+                        <th>Порядок</th>
+                        <th>Действие</th>
+                        <th>Изменить</th>
+                        <th>Удалить</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var topic in @Model)
+                    {
+                        <tr>
+                            <td>@topic.Id</td>
+                            <td>@topic.Name</td>
+                            <td>@topic.HasChildren</td>
+                            <td>@topic.ParentId</td>
+                            <td>@topic.Order</td>
+                            <td><a href="@Url.Action("EditUser", "Topics", new { id = topic.Id})" class="btn btn-default">Перейти к контенту</a></td>
+                            <td><a href="@Url.Action("EditTopic", "Topics", new { Id = topic.Id})" class="btn btn-default">Изменить</a></td>
+                            <td><a href="javascript:;" onclick="userId = @topic.Id" data-toggle="modal" data-target="#userDeleteModal" class="btn btn-link">Удалить</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
