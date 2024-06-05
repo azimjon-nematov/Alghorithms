@@ -2,24 +2,28 @@
 @{
     Layout = "/Views/Shared/Admin.cshtml";
 }
-@model Topic
-
 
 <div class="templatemo-content-wrapper">
 	<div class="templatemo-content">
-	    <h1>Редактировать Алгоритм</h1>
+	    @*<ol class="breadcrumb">
+	        <li><a href="index.html">Admin Panel</a></li>
+	        <li><a href="#">Preferences</a></li>
+	        <li class="active">Form Controls</li>
+	    </ol>*@
+	    <h1>Редактировать пользователя</h1>
+	    @*<p class="margin-bottom-15">Here goes another form and form controls.</p>*@
 	    <div class="row">
 	        <div class="col-md-12">
-	            <form role="form" id="templatemo-preferences-form" method="post" action="@Url.Action("EditTopic", "Topics")">
+	            <form role="form" id="templatemo-preferences-form" method="post" action="@Url.Action("EditUser", "Users")">
 	                <div class="row">
 	                    <div class="col-md-6 margin-bottom-15">
 	                        <label>Id</label>
-	                        <input type="text" class="form-control" name="Id" id="topicId" value="@Model.Id" readonly>  
+	                        <input type="text" class="form-control" name="Id" id="userId" value="" readonly>  
 	                        @*<p class="form-control-static" id="userId">@Model.Id</p>*@
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
-	                        <label>ID группы</label>
-	                        <input type="text" class="form-control" name="ParentId" id="ParentId" value="@Model.ParentId" >
+	                        <label>Статус</label>
+	                        <input type="text" class="form-control" name="IsAdmin" id="isAdmin" value="@(Model.IsAdmin ? "Пользователь" : "Админ")" readonly>  
 	                        @*<p class="form-control-static" id="isAdmin">@(Model.IsAdmin ? "Пользователь" : "Админ")</p>*@
 	                    </div>
 	                </div>
@@ -29,18 +33,16 @@
 	                        <input type="text" class="form-control" name="Name" id="userName" value="@Model.Name">
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
-	                        <label>Порядок</label>
-	                        <input type="text" class="form-control" name="Order" id="Order" value="@Model.Order">  
+	                        <label>Логин</label>
+	                        <input type="text" class="form-control" name="Login" id="login" value="@Model.Login">  
 	                    </div>
 	                </div>
 	                <div class="row">
-	                    <div class="col-md-6 margin-bottom-15 form-check form-switch">
-	                        <label for="HasChildren">Имеет дочерные алгоритмы</label>
-							<input id="HasChildren"  type="checkbox" role="switch" name="HasChildren" class="form-check-input" @(Model.HasChildren ? "checked" : "")>
+	                    <div class="col-md-6 margin-bottom-15">
+	                        <label for="currentPassword">Пароль</label>
+	                        <input type="text" @*type="password"*@ name="PasswordHash" class="form-control" id="currentPassword" value="@Model.PasswordHash" @*disabled*@>  
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
-	                        @*<label for="currentPassword">Не имеет контент</label>
-	                        <input type="radio" name="HasChildren" class="form-control" id="HasChildren" value="0"  @(!Model.HasChildren ? "checked" : "")>*@
 	                    </div>
 	                </div>
 	                

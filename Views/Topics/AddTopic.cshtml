@@ -2,7 +2,6 @@
 @{
     Layout = "/Views/Shared/Admin.cshtml";
 }
-@model Topic
 
 
 <div class="templatemo-content-wrapper">
@@ -30,7 +29,7 @@
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
 	                        <label>Порядок</label>
-	                        <input type="text" class="form-control" name="Order" id="Order" value="@Model.Order">  
+	                        <input type="text" class="form-control" name="Order" id="Order" value="@Model.Order">
 	                    </div>
 	                </div>
 	                <div class="row">
@@ -39,8 +38,6 @@
 							<input id="HasChildren"  type="checkbox" role="switch" name="HasChildren" class="form-check-input" @(Model.HasChildren ? "checked" : "")>
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
-	                        @*<label for="currentPassword">Не имеет контент</label>
-	                        <input type="radio" name="HasChildren" class="form-control" id="HasChildren" value="0"  @(!Model.HasChildren ? "checked" : "")>*@
 	                    </div>
 	                </div>
 	                

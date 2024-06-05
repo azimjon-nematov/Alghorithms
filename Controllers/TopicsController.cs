@@ -36,6 +36,33 @@ namespace Alghorithms.Controllers
             return View(contents);
         }
 
+        [Authorize(Roles = "True")]
+        [HttpPost]
+        public IActionResult CreateTopic()
+        {
+            return View();
+        }
+        
+
+        [Authorize(Roles = "True")]
+        [HttpPost]
+        public IActionResult CreateTopic(Topic topic)
+        {
+            if (topic == null)
+                return NotFound();
+
+            var t = repo.Create(topic);
+            if (t == null)
+            {
+                return Redirect(Url.Action("CreateTopic", "Topics")!);
+            }
+            if (!topic.HasChildren && topic.ParentId != null)
+                return Redirect(Url.Action("GetChildren", "Topics", new { Id = topic.ParentId! })!);
+
+            return Redirect(Url.Action("Index", "AdminPanel")!);
+        }
+
+        [Authorize(Roles = "True")]
         public IActionResult EditTopic([FromRoute] int Id)
         {
             var topic = repo.Get(Id);

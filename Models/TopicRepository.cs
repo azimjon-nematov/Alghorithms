@@ -11,6 +11,7 @@ namespace Alghorithms.Models
         List<Topic> GetParents();
         List<Topic> GetChildren(int topicId);
         Topic? Get(int id);
+        Topic? Create(Topic topic);
         Topic? Edit(Topic topic);
         bool Delete(int topicId);
         List<Topic> Search(string Name);
@@ -118,12 +119,32 @@ namespace Alghorithms.Models
             }
         }
 
-        public bool Delete(int topicId)
+        public Topic? Create(Topic topic)
         {
-            throw new NotImplementedException();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sqlQuery = "INSERT INTO Topics(Name, [Order], ParentId, HasChildren) VALUES(@Name, @Order, @ParentId, @HasChildren); SELECT CAST(SCOPE_IDENTITY() as int)";
+                int? res = db.Query<int?>(sqlQuery, topic).First();
+                if (res == null)
+                    return null;
+                topic.Id = res ?? -69;
+                return topic;
+            }
         }
 
         public Topic? Edit(Topic topic)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sqlQuery = "UPDATE Topics SET Name = @Name, [Order] = @Order, ParentId = @ParentId, HasChildren = @HasChildren WHERE Id = @Id";
+                var res = db.Execute(sqlQuery, topic);
+                if (res == 1)
+                    return topic;
+                return null;
+            }
+        }
+
+        public bool Delete(int topicId)
         {
             throw new NotImplementedException();
         }
