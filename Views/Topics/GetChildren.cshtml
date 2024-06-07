@@ -36,7 +36,7 @@
                             <td>@topic.HasChildren</td>
                             <td>@topic.ParentId</td>
                             <td>@topic.Order</td>
-                            <td><a href="@Url.Action("EditUser", "Topics", new { id = topic.Id})" class="btn btn-default">Перейти к контенту</a></td>
+                            <td><a href="@Url.Action("GetTopicContents", "Contents", new { topicId = topic.Id})" class="btn btn-default">Перейти к контенту</a></td>
                             <td><a href="@Url.Action("EditTopic", "Topics", new { Id = topic.Id})" class="btn btn-default">Изменить</a></td>
                             <td><a href="javascript:;" onclick="userId = @topic.Id" data-toggle="modal" data-target="#userDeleteModal" class="btn btn-link">Удалить</a></td>
                         </tr>

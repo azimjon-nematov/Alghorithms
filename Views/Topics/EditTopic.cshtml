@@ -36,11 +36,16 @@
 	                <div class="row">
 	                    <div class="col-md-6 margin-bottom-15 form-check form-switch">
 	                        <label for="HasChildren">Имеет дочерные алгоритмы</label>
-							<input id="HasChildren"  type="checkbox" role="switch" name="HasChildren" class="form-check-input" @(Model.HasChildren ? "checked" : "")>
+							<script>
+								function handleClick(cb) {
+									cb.value = cb.checked;
+									display("Clicked, new value = " + cb.checked);
+								}
+							</script>
+							<input id="HasChildren" type="checkbox" role="switch" onclick='handleClick(this);' name="HasChildren" class="form-check-input" @(Model.HasChildren ? "checked" : "")>
+							<script>handleClick(document.getElementById("HasChildren"));</script>
 	                    </div>
 	                    <div class="col-md-6 margin-bottom-15">
-	                        @*<label for="currentPassword">Не имеет контент</label>
-	                        <input type="radio" name="HasChildren" class="form-control" id="HasChildren" value="0"  @(!Model.HasChildren ? "checked" : "")>*@
 	                    </div>
 	                </div>
 	                

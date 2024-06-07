@@ -14,7 +14,9 @@ namespace Alghorithms.Controllers
 
         public IActionResult GetTopicContents(int topicId)
         {
-            return View(repo.GetTopicContent(topicId));
+            var types = repo.GetTypes();
+            var contents = repo.GetTopicContent(topicId);
+            return View((types, contents));
         }
 
     }

@@ -46,7 +46,7 @@
                                     <a href="@Url.Action("GetChildren", "Topics", new { id = topic.Id})" class="btn btn-default">Дочерние алгоритмы</a>
                                 }
                                 else {
-                                    <a href="@Url.Action("XXXXXXXX", "Topics", new { id = topic.Id})" class="btn btn-default">Перейти к контенту</a>
+                                    <a href="@Url.Action("GetTopicContents", "Contents", new { topicId = topic.Id})" class="btn btn-default">Перейти к контенту</a>
                                 }
                             </td>
                             <td><a href="@Url.Action("EditTopic", "Topics", new { Id = topic.Id})" class="btn btn-default">Изменить</a></td>

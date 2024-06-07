@@ -9,7 +9,8 @@ namespace Alghorithms.Models
         List<Content> GetTopicContent(int TopicId);
         Content? Get(int contentId);
         Content? Edit(Content content);
-        bool Delte(int contentId);
+        bool Delete(int contentId);
+        List<ContentType> GetTypes();
 
     }
     public class ContentRepository : IContentRepository // TODO: DELETE OR FIX
@@ -20,7 +21,7 @@ namespace Alghorithms.Models
             this.connectionString = connectionString;
         }
 
-        public bool Delte(int contentId)
+        public bool Delete(int contentId)
         {
             throw new NotImplementedException();
         }
@@ -44,5 +45,20 @@ namespace Alghorithms.Models
                 return contentList;
             }
         }
+
+        public List<ContentType> GetTypes()
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sql = "SELECT * FROM ContentTypes";
+                var contentList = db.Query<ContentType>(sql).ToList();
+                return contentList;
+            }
+        }
+    }
+    public class ContentType
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
