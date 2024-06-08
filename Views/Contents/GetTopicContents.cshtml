@@ -21,50 +21,31 @@
             @foreach (var content in @Model.Item2)
             {
                 <div class="row">
-                    <select name="ContentTypeName" class="form-control">
-                        @foreach (var contentType in @Model.Item1)
+                    <div class="margin-bottom-15">
+                        <select name="ContentTypeName" class="form-control">
+                            @foreach (var contentType in @Model.Item1)
+                            {
+                                <option value="@contentType.Id" @(contentType.Id == content.ContentTypeId ? "selected" : "")>@contentType.Name</option>
+                            }
+                        </select>
+                        @if(content.ContentTypeName == "Text" || content.ContentTypeName == "MarkedText" || content.ContentTypeName == "Warning")
                         {
-                            <option value="@contentType.Id" @(contentType.Id == content.ContentTypeId ? "selected" : "")>@contentType.Name</option>
+                            <textarea class="form-control" rows="4">@content.Data</textarea>
                         }
-                    </select>
-                    @if(content.ContentTypeName == "Text" || content.ContentTypeName == "MarkedText" || content.ContentTypeName == "Warning")
-                    {
-                        <textarea class="form-control" rows="4">@content.Data</textarea>
-                    }
-                    else
-                    {
-                        <input type="text" class="form-control" value="@content.Data">
-                    }
-                    @*<div class="container">
-                        <div class="row">
-                            <div class="col">
-                                1 of 2
-                            </div>
-                            <div class="col">
-                                2 of 2
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label>Порядок</label>
-                            </div>
-                            <div class="col">
-                                <input type="number" class="form-control" value="@content.Order">
-                            </div>
-                            <div class="col">
-                               <button class="btn btn-primary">Изменить</button>
-                            </div>
-                        </div>
-                    </div>*@
+                        else
+                        {
+                            <input type="text" class="form-control" value="@content.Data">
+                        }
+                    </div>
                     
-                    <div class="col-md-1 margin-bottom-15">
+                    <div class="col-md-1" style="margin-top: 5px;">
                         <label>Порядок:</label>
 	                </div>
                     <div class="col-md-5 margin-bottom-15">
                         <input type="number" class="form-control" value="@content.Order">
 	                </div>
-                    <div class="col-md-6 margin-bottom-15" style="margin-left: auto;">
-	                    <button class="btn btn-primary">Изменить</button>
+                    <div class="col-md-6 margin-bottom-15" style="text-align: end">
+	                    <button class="btn btn-primary">Сохранить</button>
 	                </div>
                 </div>
             }
