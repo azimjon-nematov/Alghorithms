@@ -11,6 +11,7 @@ namespace Alghorithms.Models
         Content? Edit(Content content);
         bool Delete(int contentId);
         List<ContentType> GetTypes();
+        List<ProgramingLanguage> GetLangs();
 
     }
     public class ContentRepository : IContentRepository // TODO: DELETE OR FIX
@@ -28,7 +29,16 @@ namespace Alghorithms.Models
 
         public Content? Edit(Content content)
         {
-            throw new NotImplementedException();
+            if (content == null)
+                return null;
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sqlQuery = "UPDATE Content SET ContentTypeId = @ContentTypeId, Data = @Data, Order = @Order, CodeListId = @CodeListId WHERE Id = @Id";
+                var res = db.Execute(sqlQuery, content);
+                if (res == 1)
+                    return content;
+                return null;
+            }
         }
 
         public Content? Get(int contentId)
@@ -52,6 +62,16 @@ namespace Alghorithms.Models
             {
                 var sql = "SELECT * FROM ContentTypes";
                 var contentList = db.Query<ContentType>(sql).ToList();
+                return contentList;
+            }
+        }
+
+        public List<ProgramingLanguage> GetLangs()
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                var sql = "SELECT * FROM ProgramingLanguages";
+                var contentList = db.Query<ProgramingLanguage>(sql).ToList();
                 return contentList;
             }
         }

@@ -16,7 +16,18 @@ namespace Alghorithms.Controllers
         {
             var types = repo.GetTypes();
             var contents = repo.GetTopicContent(topicId);
-            return View((types, contents));
+            //var langs = repo.GetLangs();
+            return View((types, contents/*, langs*/));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Content content)
+        {
+            var res = repo.Edit(content);
+            if (res == null)
+                return BadRequest();
+
+            return Ok(res!);
         }
 
     }
