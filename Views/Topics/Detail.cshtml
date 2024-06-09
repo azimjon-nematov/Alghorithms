@@ -6,6 +6,9 @@
 @using System.Security.Claims
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @model (Topic, List<Content>, List<Comment>)
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
             <header class="site-header d-flex flex-column justify-content-center align-items-center">
                 <div class="container">
                     <div class="row justify-content-center align-items-center">
@@ -40,11 +43,11 @@
                 }
                 else if(content.ContentTypeName == "Text")
                 {
-                    <p align="justify">@content.Data</p>
+                    <p align="justify">@Html.Raw(@content.Data)</p>
                 }
                 else if(content.ContentTypeName == "Subtitle")
                 {
-                                
+                    <h5 class="mb-4">@content.Data</h5>
                 }
                 else if(content.ContentTypeName == "Image")
                 {
@@ -58,7 +61,7 @@
                     <ul>
                     @foreach (var item in items)
                     {
-                        <li><p align="justify">@item</p></li>
+                        <li><p align="justify">@Html.Raw(@item)</p></li>
                     }
                     </ul>
                 }

@@ -14,11 +14,14 @@
         var ContentTypeId = encodeURIComponent(document.getElementById("ContentTypeId"+id).value);
         var Data = encodeURIComponent(document.getElementById("Data"+id).value);
         var Order = encodeURIComponent(document.getElementById("Order"+id).value);
-        var CodeListId = encodeURIComponent(document.getElementById("CodeListId"+id).value);/////////
-        
+        var res = 'Id='+contentId + '&ContentTypeId='+ContentTypeId + '&Data='+Data 
+            + '&Order='+Order + '&CodeListId='
+        if (ContentTypeId == 6) {
+            var CodeListId = encodeURIComponent(document.getElementById("CodeListId"+id).value);
+            res += CodeListId
+        }
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('Id='+contentId + '&ContentTypeId='+ContentTypeId + '&Data='+Data 
-            + '&Order='+Order + '&CodeListId='+CodeListId);
+        xhr.send(res);
         xhr.onreadystatechange = handleFunc;
 
         function handleFunc() {
