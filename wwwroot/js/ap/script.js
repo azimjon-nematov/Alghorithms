@@ -1,4 +1,3 @@
-/* Credit: http://www.templatemo.com */
     
 $(document).ready( function() {        
 

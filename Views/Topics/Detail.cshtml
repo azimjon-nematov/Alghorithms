@@ -7,7 +7,7 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @model (Topic, List<Content>, List<Comment>)
 
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="@Url.Content("~/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML")"></script>
 
             <header class="site-header d-flex flex-column justify-content-center align-items-center">
                 <div class="container">
