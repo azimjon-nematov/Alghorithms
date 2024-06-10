@@ -185,7 +185,7 @@
 	                }
                     var header = '<div id="commentHeader" class="col-lg-8 col-12 m-auto"><h3 class="mb-4">Шарҳҳои алгоритм</h3><br/>    </div>'
 
-                    var res = xhr.responseText + container.innerHTML;
+                    var res = header + xhr.responseText + container.innerHTML;
                     container.innerHTML = res;
 
 	                //ul.appendChild(createElementFromHTML(xhr.responseText));

@@ -48,16 +48,16 @@
         <h1>Контент</h1>
       
         <div class="table-responsive">
-            <div class="btn-group pull-right" id="templatemo_sort_btn" style="margin-bottom: 0px">
+            @*<div class="btn-group pull-right" id="templatemo_sort_btn" style="margin-bottom: 0px">
                 <a href="" class="btn btn-default">Добавить</a>
-            </div>
+            </div>*@
             <h4 class="margin-bottom-15">Все алгоритмы</h4>
             
             <div id="MainContainer">
             @foreach (var content in @Model.Item2)
             {
                 string iid = content.Id.ToString();
-                <div class="row" id="@("container"+iid)">
+                <div class="row margin-bottom-15" id="@("container"+iid)">
                     <div class="margin-bottom-15">
                         <select id="@("ContentTypeId"+iid)" name="ContentTypeId" class="form-control">
                             @foreach (var contentType in @Model.Item1)

@@ -3,6 +3,15 @@
     Layout = "/Views/Shared/Admin.cshtml";
 }
 @model List<Topic>
+<script>
+    var topicId = -69;
+
+    function deleteTopic() {
+        let urlstr = "/Topic/Delete/" + topicId;
+        console.log(urlstr);
+        window.open(urlstr, "_self");
+    }
+</script>
 
 <div class="templatemo-content-wrapper">
     <div class="templatemo-content">
@@ -16,9 +25,9 @@
         @*<p>Dashboard is free admin template for everyone. Credits go to <a href="http://chartjs.org">Chart JS</a>, <a href="http://getbootstrap.com">Bootstrap</a>, and <a href="http://jqvmap.com">JQVMap</a>. templatemo provides <a href="#">free website templates</a> that can be used for any purpose. Morbi id nisi enim. Ut congue interdum pharetra facilisi. Aenean consectetur pellentesque mauris nec ornare. Nam tortor just, condimentum.</p>*@
         
         <div class="table-responsive">
-            <div class="btn-group pull-right" id="templatemo_sort_btn" style="margin-bottom: 0px">
+@*            <div class="btn-group pull-right" id="templatemo_sort_btn" style="margin-bottom: 0px">
                 <a href="" class="btn btn-default">Добавить</a>
-            </div>
+            </div>*@
             <h4 class="margin-bottom-15">Все алгоритмы</h4>
             <table class="table table-striped table-hover table-bordered">
                 <thead>
@@ -50,7 +59,7 @@
                                 }
                             </td>
                             <td><a href="@Url.Action("EditTopic", "Topics", new { Id = topic.Id})" class="btn btn-default">Изменить</a></td>
-                            <td><a href="javascript:;" onclick="userId = @topic.Id" data-toggle="modal" data-target="#userDeleteModal" class="btn btn-link">Удалить</a></td>
+                            <td><a href="javascript:;" onclick="topicId = @topic.Id" data-toggle="modal" data-target="#topicDeleteModal" class="btn btn-danger">Удалить</a></td>
                         </tr>
                     }
                 </tbody>
@@ -293,4 +302,21 @@
             </div>
         </div>*@
     </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="topicDeleteModal" tabindex="-1" role="dialog" aria-labelledby="topicDeleteModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	    <div class="modal-content">
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	            <h4 class="modal-title" id="topicDeleteModalLabel">Удалить выбранный объект?</h4>
+	        </div>
+	        <div class="modal-footer">
+	            <a href="javascript: deleteTopic();" class="btn btn-danger">Да</a>
+	            <button type="button" class="btn btn-default" data-dismiss="modal">Нет</button>
+	        </div>
+	    </div>
+	</div>
 </div>
